@@ -1,14 +1,14 @@
 //
-//  FactCategory.swift
+//  FactServiceProtocol.swift
 //  ChuckFacts
 //
 //  Created by Calebe Emerick on 02/03/2018.
 //  Copyright © 2018 Stone Pagamentos. All rights reserved.
 //
 
-import Foundation
+import RxSwift
 
-struct FactCategory {
+protocol FactServiceProtocol: class {
 	
-	let categories: [String]
+	func get(_ term: String) -> Observable<[Fact]>
 }
