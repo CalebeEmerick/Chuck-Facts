@@ -11,19 +11,5 @@ import Foundation
 enum JSONParseError {
 	
 	case result
-	case modelParse(String)
-}
-
-extension JSONParseError: Equatable {
-	
-	static func ==(lhs: JSONParseError, rhs: JSONParseError) -> Bool {
-		switch (lhs, rhs) {
-		case (let .modelParse(error), let .modelParse(error2)):
-			return error == error2
-		case (.result, .result):
-			return true
-		default:
-			return false
-		}
-	}
+	case modelParse
 }

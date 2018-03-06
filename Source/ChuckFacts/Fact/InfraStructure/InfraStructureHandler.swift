@@ -18,6 +18,16 @@ final class InfraStructureHandler {
 		}
 	}
 	
+	func mapResultToJSON(_ result: Any) throws -> JSON {
+		
+		guard let json = result as? JSON else {
+			let serviceError = ServiceError.JSONParse(.result)
+			throw serviceError
+		}
+		
+		return json
+	}
+	
 	private func getError(for statusCode: Int) -> ServiceError {
 		switch statusCode {
 			
