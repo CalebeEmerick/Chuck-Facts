@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="FactCell" customModule="ChuckFacts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BB3-Wo-r2E">
+                        <rect key="frame" x="20" y="15" width="285" height="29"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CrJ-9h-dgT">
+                        <rect key="frame" x="222.5" y="53.5" width="82.5" height="26"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYN-6R-g7b">
+                                <rect key="frame" x="8" y="4" width="66.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="VYN-6R-g7b" secondAttribute="bottom" constant="4" id="4gE-NF-H0B"/>
+                            <constraint firstItem="VYN-6R-g7b" firstAttribute="top" secondItem="CrJ-9h-dgT" secondAttribute="top" constant="4" id="KCM-rV-AE7"/>
+                            <constraint firstAttribute="trailing" secondItem="VYN-6R-g7b" secondAttribute="trailing" constant="8" id="bpc-dk-Bdr"/>
+                            <constraint firstItem="VYN-6R-g7b" firstAttribute="leading" secondItem="CrJ-9h-dgT" secondAttribute="leading" constant="8" id="ivU-Tj-ZWE"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="BB3-Wo-r2E" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="6wh-wF-5dD"/>
+                    <constraint firstAttribute="bottom" secondItem="CrJ-9h-dgT" secondAttribute="bottom" constant="10" id="DRE-ly-dzG"/>
+                    <constraint firstItem="BB3-Wo-r2E" firstAttribute="trailing" secondItem="CrJ-9h-dgT" secondAttribute="trailing" id="FA2-pn-spd"/>
+                    <constraint firstItem="CrJ-9h-dgT" firstAttribute="top" secondItem="BB3-Wo-r2E" secondAttribute="bottom" constant="10" id="iHC-IL-vCV"/>
+                    <constraint firstItem="BB3-Wo-r2E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="rqW-YC-haH"/>
+                    <constraint firstAttribute="trailing" secondItem="CrJ-9h-dgT" secondAttribute="trailing" constant="15" id="xNn-BQ-bzN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="categoryContainer" destination="CrJ-9h-dgT" id="rq2-Ee-frz"/>
+                <outlet property="categoryLabel" destination="VYN-6R-g7b" id="1Uw-Ri-Hia"/>
+                <outlet property="messageLabel" destination="BB3-Wo-r2E" id="tLW-Un-h12"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="38"/>
+        </tableViewCell>
+    </objects>
+</document>

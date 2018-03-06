@@ -15,6 +15,17 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
+		let screenBounds = UIScreen.main.bounds
+		let window = UIWindow(frame: screenBounds)
+		
+		let service = FactService()
+		let rootController = FactsController(service: service)
+		let rootNavigation = UINavigationController(rootViewController: rootController)
+		
+		window.rootViewController = rootNavigation
+		
+		self.window = window
+		window.makeKeyAndVisible()
 		
 		return true
 	}
