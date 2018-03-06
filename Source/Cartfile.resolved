@@ -1,3 +1,5 @@
-github "Alamofire/Alamofire" "4.6.0"
+github "Alamofire/Alamofire" "4.7.0"
+github "Quick/Nimble" "v7.0.3"
+github "Quick/Quick" "v1.2.0"
 github "ReactiveX/RxSwift" "4.1.2"
 github "RxSwiftCommunity/RxAlamofire" "8a4856ddd77910950aa2b0f9e237e0209580503c"
