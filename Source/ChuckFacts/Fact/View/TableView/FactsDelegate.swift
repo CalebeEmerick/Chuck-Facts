@@ -10,16 +10,6 @@ import UIKit
 
 final class FactsDelegate: NSObject, UITableViewDelegate {
 	
-	func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-		
-		return 115
-	}
-	
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		
-		return UITableViewAutomaticDimension
-	}
-	
 	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 		
 		return UIView()

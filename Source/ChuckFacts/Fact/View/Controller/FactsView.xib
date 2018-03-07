@@ -16,7 +16,24 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XOd-LN-EMz">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F0u-7V-1PH">
+                    <rect key="frame" x="120" y="100" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="e6L-Sx-i6p"/>
+                        <constraint firstAttribute="width" constant="80" id="ucJ-H9-kGw"/>
+                    </constraints>
+                </imageView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Busque um Chuck fato..." textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qih-4W-3an">
+                    <rect key="frame" x="30" y="230" width="260" height="40"/>
+                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="MAQ-MZ-aEz"/>
+                    </constraints>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                </textField>
+                <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XOd-LN-EMz">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
@@ -24,13 +41,24 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="XOd-LN-EMz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4N3-Pn-nQ0"/>
-                <constraint firstItem="XOd-LN-EMz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Upq-yY-DYA"/>
+                <constraint firstItem="Qih-4W-3an" firstAttribute="top" secondItem="F0u-7V-1PH" secondAttribute="bottom" constant="50" id="GkG-YS-pQ2"/>
+                <constraint firstItem="F0u-7V-1PH" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="80" id="IDr-eX-zDd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Qih-4W-3an" secondAttribute="trailing" constant="30" id="LgJ-cH-yBE"/>
+                <constraint firstItem="Qih-4W-3an" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="ba5-73-LWI"/>
+                <constraint firstItem="F0u-7V-1PH" firstAttribute="centerX" secondItem="Qih-4W-3an" secondAttribute="centerX" id="gZf-SS-0p8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XOd-LN-EMz" secondAttribute="trailing" id="lyw-4u-P7F"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="XOd-LN-EMz" secondAttribute="bottom" id="mNH-80-yYQ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="XOd-LN-EMz"/>
+                </mask>
+            </variation>
             <connections>
+                <outlet property="imageView" destination="F0u-7V-1PH" id="sK0-rM-cQd"/>
                 <outlet property="tableView" destination="XOd-LN-EMz" id="tMh-5K-UIW"/>
+                <outlet property="textField" destination="Qih-4W-3an" id="cGJ-Zo-KMz"/>
             </connections>
         </view>
     </objects>

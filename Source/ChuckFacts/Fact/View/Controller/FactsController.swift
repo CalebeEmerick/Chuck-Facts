@@ -20,6 +20,7 @@ final class FactsController: UIViewController {
 	init(service: FactServiceProtocol) {
 		viewModel = FactViewModel(service: service)
 		factsView = FactsView.makeXib()
+		factsView.viewModel = viewModel
 		
 		super.init(nibName: nil, bundle: nil)
 		
@@ -42,17 +43,7 @@ extension FactsController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		viewModel.getScreenState(from: "car")
-			.observeOn(MainScheduler.instance)
-			.subscribe(
-				onNext: { facts in
-
-					if case let .success(facts) = facts {
-						self.factsView.reloadData(with: facts)
-					}
-			}
-		)
-		.disposed(by: disposeBag)
+		
 	}
 }
 
