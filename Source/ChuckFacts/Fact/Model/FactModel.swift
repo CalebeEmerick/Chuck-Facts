@@ -37,3 +37,14 @@ final class FactModel {
 		}
 	}
 }
+
+extension FactModel: Equatable {
+	
+	static func ==(lhs: FactModel, rhs: FactModel) -> Bool {
+		return lhs.message == rhs.message &&
+		lhs.category == rhs.category &&
+		lhs.messageFont == rhs.messageFont &&
+		lhs.radius == rhs.radius &&
+		lhs.categoryBackground == rhs.categoryBackground
+	}
+}

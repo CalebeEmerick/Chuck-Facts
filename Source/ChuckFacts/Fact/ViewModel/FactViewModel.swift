@@ -16,18 +16,10 @@ final class FactViewModel {
 		self.service = service
 	}
 	
-	func getScreenState(from term: String) -> Observable<FactScreenState> {
-		
-		let state = service.get(term)
-			.map { [unowned self] facts in
-				self.mapFactsToSuccessState(facts)
-			}
-			.catchError { [unowned self] (error) -> Observable<FactScreenState> in
-				let state = self.mapErrorToScreenState(error)
-				return Observable.just(state)
-		}
-		
-		return state
+	func search(for term: String) -> Observable<FactScreenState> {
+		let color = Color(hexString: "#f5f5f5").color
+		return getScreenState(from: term)
+			.startWith(.loading(color))
 	}
 	
 	private func mapFactsToSuccessState(_ facts: [Fact]) -> FactScreenState {
@@ -36,24 +28,37 @@ final class FactViewModel {
 			FactModel(fact: $0)
 		}
 		
+		if facts.isEmpty {
+			return FactScreenState.successWithEmptyResult
+		}
+		
 		return FactScreenState.success(facts)
+	}
+	
+	private func getScreenState(from term: String) -> Observable<FactScreenState> {
+		return service.get(term)
+			.map { [unowned self] facts in
+				self.mapFactsToSuccessState(facts)
+			}
+			.catchError { [unowned self] (error) -> Observable<FactScreenState> in
+				let state = self.mapErrorToScreenState(error)
+				return Observable.just(state)
+		}
 	}
 	
 	private func mapErrorToScreenState(_ error: Error) -> FactScreenState {
 		
 		guard let serviceError = error as? ServiceError else {
-			return .unexpectedError
+			return .failure(.internal)
 		}
 		
 		switch serviceError {
-		case let .JSONParse(error):
-			return .failure()
+		case .JSONParse, .internalServer:
+			return .failure(.internal)
 		case let .badRequest(error):
-			return .failure()
-		case let .connection(error):
-			return .failure()
-		case .internalServer:
-			return .failure()
+			return FactScreenState(badRequest: error)
+		case .connection:
+			return .failure(.connection)
 		}
 	}
 }

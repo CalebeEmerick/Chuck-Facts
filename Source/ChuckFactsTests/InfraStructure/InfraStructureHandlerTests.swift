@@ -45,7 +45,7 @@ final class InfraStructureHandlerTests: XCTestCase {
 			try self.handler.verifySuccessStatusCode(response)
 			}.to(throwError { (error: ServiceError) in
 				if case let .badRequest(error) = error {
-					expect(error).to(equal(BadRequestError.invalidTerm))
+					expect(error).to(equal(BadRequestError.noResults))
 				}
 				else {
 					fail("Esperava-se ser um BadRequest error.")
@@ -61,7 +61,7 @@ final class InfraStructureHandlerTests: XCTestCase {
 			try self.handler.verifySuccessStatusCode(response)
 			}.to(throwError { (error: ServiceError) in
 				if case let .badRequest(error) = error {
-					expect(error).to(equal(BadRequestError.notFound))
+					expect(error).to(equal(BadRequestError.invalidTerm))
 				}
 				else {
 					fail("Esperava-se ser um BadRequest error.")

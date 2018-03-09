@@ -10,16 +10,16 @@ import Foundation
 
 enum BadRequestError {
 	
+	case noResults
 	case invalidTerm
-	case notFound
 	case other
 	
 	init(code: Int) {
 		switch code {
 		case 422:
-			self = .invalidTerm
+			self = .noResults
 		case 404:
-			self = .notFound
+			self = .invalidTerm
 		default:
 			self = .other
 		}

@@ -46,15 +46,21 @@
 		34901BD72049F9D500C29ADD /* JSONParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34901BD62049F9D500C29ADD /* JSONParseError.swift */; };
 		34901BD92049F9E900C29ADD /* BadRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34901BD82049F9E900C29ADD /* BadRequestError.swift */; };
 		34901BDB2049FA0100C29ADD /* InternetConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34901BDA2049FA0100C29ADD /* InternetConnectionError.swift */; };
+		349A647120530AE3001BC728 /* FactScreenErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349A647020530AE3001BC728 /* FactScreenErrorType.swift */; };
 		34AD0EC82049CD6F00B97FF7 /* FactCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AD0EC72049CD6F00B97FF7 /* FactCategory.swift */; };
 		34AD0ED82049D2C300B97FF7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AD0ED32049D2C300B97FF7 /* Alamofire.framework */; };
 		34AD0ED92049D2C300B97FF7 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AD0ED42049D2C300B97FF7 /* RxAlamofire.framework */; };
 		34AD0EDA2049D2C300B97FF7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AD0ED52049D2C300B97FF7 /* RxCocoa.framework */; };
 		34AD0EDB2049D2C300B97FF7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AD0ED62049D2C300B97FF7 /* RxSwift.framework */; };
-		34AD0EDC2049D2C300B97FF7 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AD0ED72049D2C300B97FF7 /* RxBlocking.framework */; };
 		34AD0EE12049DA8900B97FF7 /* FactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AD0EE02049DA8900B97FF7 /* FactService.swift */; };
 		34AD0EE32049DD5100B97FF7 /* FactServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AD0EE22049DD5100B97FF7 /* FactServiceProtocol.swift */; };
+		34B54AC320518D2400ACC3AE /* FactViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B54AC220518D2400ACC3AE /* FactViewModelTests.swift */; };
+		34B54AC520518D8100ACC3AE /* FactServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B54AC420518D8100ACC3AE /* FactServiceMock.swift */; };
+		34B54AC62051B06000ACC3AE /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AD0ED72049D2C300B97FF7 /* RxBlocking.framework */; };
+		34B54AC82051B07100ACC3AE /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B54AC72051B07000ACC3AE /* RxTest.framework */; };
 		34B8B1B5204F12EC00A58EBE /* FactMapperErrorParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B8B1B4204F12EC00A58EBE /* FactMapperErrorParserTests.swift */; };
+		34E380862051BD61009DACA4 /* RxTest.framework in Carthage Copy Files */ = {isa = PBXBuildFile; fileRef = 34B54AC72051B07000ACC3AE /* RxTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		34E380872051BD61009DACA4 /* RxBlocking.framework in Carthage Copy Files */ = {isa = PBXBuildFile; fileRef = 34AD0ED72049D2C300B97FF7 /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +82,8 @@
 			files = (
 				3452997A204DEFA700358BB2 /* Nimble.framework in Carthage Copy Files */,
 				3452997B204DEFA700358BB2 /* Quick.framework in Carthage Copy Files */,
+				34E380862051BD61009DACA4 /* RxTest.framework in Carthage Copy Files */,
+				34E380872051BD61009DACA4 /* RxBlocking.framework in Carthage Copy Files */,
 			);
 			name = "Carthage Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +132,7 @@
 		34901BD62049F9D500C29ADD /* JSONParseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParseError.swift; sourceTree = "<group>"; };
 		34901BD82049F9E900C29ADD /* BadRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadRequestError.swift; sourceTree = "<group>"; };
 		34901BDA2049FA0100C29ADD /* InternetConnectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionError.swift; sourceTree = "<group>"; };
+		349A647020530AE3001BC728 /* FactScreenErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactScreenErrorType.swift; sourceTree = "<group>"; };
 		34AD0EC72049CD6F00B97FF7 /* FactCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactCategory.swift; sourceTree = "<group>"; };
 		34AD0ED32049D2C300B97FF7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		34AD0ED42049D2C300B97FF7 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
@@ -132,6 +141,9 @@
 		34AD0ED72049D2C300B97FF7 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		34AD0EE02049DA8900B97FF7 /* FactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactService.swift; sourceTree = "<group>"; };
 		34AD0EE22049DD5100B97FF7 /* FactServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactServiceProtocol.swift; sourceTree = "<group>"; };
+		34B54AC220518D2400ACC3AE /* FactViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactViewModelTests.swift; sourceTree = "<group>"; };
+		34B54AC420518D8100ACC3AE /* FactServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactServiceMock.swift; sourceTree = "<group>"; };
+		34B54AC72051B07000ACC3AE /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		34B8B1B4204F12EC00A58EBE /* FactMapperErrorParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactMapperErrorParserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,8 +152,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34B54AC82051B07100ACC3AE /* RxTest.framework in Frameworks */,
 				34529978204DEF9300358BB2 /* Nimble.framework in Frameworks */,
 				34529979204DEF9300358BB2 /* Quick.framework in Frameworks */,
+				34B54AC62051B06000ACC3AE /* RxBlocking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +167,6 @@
 				34AD0ED92049D2C300B97FF7 /* RxAlamofire.framework in Frameworks */,
 				34AD0EDA2049D2C300B97FF7 /* RxCocoa.framework in Frameworks */,
 				34AD0EDB2049D2C300B97FF7 /* RxSwift.framework in Frameworks */,
-				34AD0EDC2049D2C300B97FF7 /* RxBlocking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +194,7 @@
 		34298ABE204D90680003C863 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				349A647020530AE3001BC728 /* FactScreenErrorType.swift */,
 				34298AC1204D91B60003C863 /* FactScreenState.swift */,
 				34298ABF204D907A0003C863 /* FactViewModel.swift */,
 			);
@@ -273,6 +287,7 @@
 		34529968204DEE2E00358BB2 /* ChuckFactsTests */ = {
 			isa = PBXGroup;
 			children = (
+				34B54AC120518D1000ACC3AE /* ViewModel */,
 				341A0A6A204F0D4900F9E701 /* URLMaker */,
 				341A0A5C204EF9AE00F9E701 /* Fact */,
 				34529982204EE60400358BB2 /* Mapper */,
@@ -294,6 +309,8 @@
 			isa = PBXGroup;
 			children = (
 				3452997E204DF37800358BB2 /* InfraStructureHandler.swift */,
+				34901BD42049F9BC00C29ADD /* ServiceError.swift */,
+				34901BD62049F9D500C29ADD /* JSONParseError.swift */,
 				34901BD82049F9E900C29ADD /* BadRequestError.swift */,
 				34901BDA2049FA0100C29ADD /* InternetConnectionError.swift */,
 			);
@@ -384,6 +401,7 @@
 		34AD0ED22049D2C300B97FF7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				34B54AC72051B07000ACC3AE /* RxTest.framework */,
 				34529976204DEF9300358BB2 /* Nimble.framework */,
 				34529977204DEF9300358BB2 /* Quick.framework */,
 				34AD0ED32049D2C300B97FF7 /* Alamofire.framework */,
@@ -400,12 +418,19 @@
 			children = (
 				34901BD22049EE1500C29ADD /* JSON.swift */,
 				341A0A68204F0C9900F9E701 /* FactURLMaker.swift */,
-				34901BD42049F9BC00C29ADD /* ServiceError.swift */,
-				34901BD62049F9D500C29ADD /* JSONParseError.swift */,
 				34AD0EE22049DD5100B97FF7 /* FactServiceProtocol.swift */,
 				34AD0EE02049DA8900B97FF7 /* FactService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		34B54AC120518D1000ACC3AE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				34B54AC420518D8100ACC3AE /* FactServiceMock.swift */,
+				34B54AC220518D2400ACC3AE /* FactViewModelTests.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -519,7 +544,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 			);
@@ -527,7 +551,6 @@
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxAlamofire.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxBlocking.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 			);
@@ -542,8 +565,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34B54AC320518D2400ACC3AE /* FactViewModelTests.swift in Sources */,
 				34529984204EE61700358BB2 /* FactMapperTests.swift in Sources */,
 				341A0A60204EFC1A00F9E701 /* FactCategoryTests.swift in Sources */,
+				34B54AC520518D8100ACC3AE /* FactServiceMock.swift in Sources */,
 				341A0A62204EFCFD00F9E701 /* FactModelTests.swift in Sources */,
 				34529981204ED36B00358BB2 /* InfraStructureHandlerTests.swift in Sources */,
 				341A0A5E204EFA0500F9E701 /* FactTests.swift in Sources */,
@@ -565,6 +590,7 @@
 				341A0A69204F0C9900F9E701 /* FactURLMaker.swift in Sources */,
 				34298AD6204DDA030003C863 /* CollectionViewReusable.swift in Sources */,
 				34901BD92049F9E900C29ADD /* BadRequestError.swift in Sources */,
+				349A647120530AE3001BC728 /* FactScreenErrorType.swift in Sources */,
 				341A0A70204F0E7E00F9E701 /* FactMapperErrorParser.swift in Sources */,
 				34298AE8204DDC0D0003C863 /* FactCell.swift in Sources */,
 				34AD0EE32049DD5100B97FF7 /* FactServiceProtocol.swift in Sources */,
