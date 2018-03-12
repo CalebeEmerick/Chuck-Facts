@@ -10,6 +10,9 @@
 		3419BCE920572294003AEAED /* InternalErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3419BCE820572294003AEAED /* InternalErrorView.xib */; };
 		3419BCEB205722A4003AEAED /* InternalErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419BCEA205722A4003AEAED /* InternalErrorView.swift */; };
 		3419BCEC20572982003AEAED /* FactServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B54AC420518D8100ACC3AE /* FactServiceMock.swift */; };
+		3419BCEF20573197003AEAED /* ConnectionErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3419BCEE20573197003AEAED /* ConnectionErrorView.xib */; };
+		3419BCF1205731A7003AEAED /* ConnectionErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419BCF0205731A7003AEAED /* ConnectionErrorView.swift */; };
+		3419BCF3205737F6003AEAED /* ConnectionErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419BCF2205737F6003AEAED /* ConnectionErrorViewModel.swift */; };
 		341A0A5E204EFA0500F9E701 /* FactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A0A5D204EFA0500F9E701 /* FactTests.swift */; };
 		341A0A60204EFC1A00F9E701 /* FactCategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A0A5F204EFC1A00F9E701 /* FactCategoryTests.swift */; };
 		341A0A62204EFCFD00F9E701 /* FactModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A0A61204EFCFD00F9E701 /* FactModelTests.swift */; };
@@ -97,6 +100,9 @@
 /* Begin PBXFileReference section */
 		3419BCE820572294003AEAED /* InternalErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InternalErrorView.xib; sourceTree = "<group>"; };
 		3419BCEA205722A4003AEAED /* InternalErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalErrorView.swift; sourceTree = "<group>"; };
+		3419BCEE20573197003AEAED /* ConnectionErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionErrorView.xib; sourceTree = "<group>"; };
+		3419BCF0205731A7003AEAED /* ConnectionErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorView.swift; sourceTree = "<group>"; };
+		3419BCF2205737F6003AEAED /* ConnectionErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorViewModel.swift; sourceTree = "<group>"; };
 		341A0A5D204EFA0500F9E701 /* FactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactTests.swift; sourceTree = "<group>"; };
 		341A0A5F204EFC1A00F9E701 /* FactCategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactCategoryTests.swift; sourceTree = "<group>"; };
 		341A0A61204EFCFD00F9E701 /* FactModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactModelTests.swift; sourceTree = "<group>"; };
@@ -183,6 +189,7 @@
 		3419BCE520572182003AEAED /* Error */ = {
 			isa = PBXGroup;
 			children = (
+				3419BCED20573188003AEAED /* Connection */,
 				3419BCE72057227C003AEAED /* Internal */,
 			);
 			path = Error;
@@ -195,6 +202,16 @@
 				3419BCEA205722A4003AEAED /* InternalErrorView.swift */,
 			);
 			path = Internal;
+			sourceTree = "<group>";
+		};
+		3419BCED20573188003AEAED /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				3419BCEE20573197003AEAED /* ConnectionErrorView.xib */,
+				3419BCF0205731A7003AEAED /* ConnectionErrorView.swift */,
+				3419BCF2205737F6003AEAED /* ConnectionErrorViewModel.swift */,
+			);
+			path = Connection;
 			sourceTree = "<group>";
 		};
 		341A0A5C204EF9AE00F9E701 /* Fact */ = {
@@ -557,6 +574,7 @@
 				346FB50D204891A9006F962F /* LaunchScreen.storyboard in Resources */,
 				346FB50A204891A9006F962F /* Assets.xcassets in Resources */,
 				34298AE9204DDC0D0003C863 /* FactCell.xib in Resources */,
+				3419BCEF20573197003AEAED /* ConnectionErrorView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,9 +645,11 @@
 				34298AD5204DDA030003C863 /* NibCreatable.swift in Sources */,
 				34298ACC204DD84B0003C863 /* FactsView.swift in Sources */,
 				34AD0EE12049DA8900B97FF7 /* FactService.swift in Sources */,
+				3419BCF3205737F6003AEAED /* ConnectionErrorViewModel.swift in Sources */,
 				34298AC2204D91B60003C863 /* FactScreenState.swift in Sources */,
 				34901BD32049EE1500C29ADD /* JSON.swift in Sources */,
 				34298AC7204D9FA50003C863 /* FactModel.swift in Sources */,
+				3419BCF1205731A7003AEAED /* ConnectionErrorView.swift in Sources */,
 				34298ACA204DC5A10003C863 /* FactsController.swift in Sources */,
 				34298AC0204D907A0003C863 /* FactViewModel.swift in Sources */,
 				3419BCEB205722A4003AEAED /* InternalErrorView.swift in Sources */,

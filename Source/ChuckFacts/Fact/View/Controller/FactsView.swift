@@ -23,6 +23,7 @@ final class FactsView: UIView {
 	private let disposeBag = DisposeBag()
 	
 	private var internalError: InternalErrorView?
+	private var connectionError: ConnectionErrorView?
 	
 	weak var viewModel: FactViewModel?
 }
@@ -37,6 +38,7 @@ extension FactsView {
 		setKeyboardButtonSubscription()
 		setupImageAnimation()
 		setupTableView()
+		openKeyboard()
 	}
 }
 
@@ -47,8 +49,7 @@ extension FactsView {
 	private func setKeyboardButtonSubscription() {
 		textField.rx.controlEvent(.editingDidEndOnExit)
 			.subscribe(onNext: { [weak self] in
-				let term = self?.textField.text ?? ""
-				self?.setScreenState(for: term)
+				self?.searchTerm()
 			})
 			.disposed(by: disposeBag)
 	}
@@ -97,6 +98,7 @@ extension FactsView {
 		case let .loading(color):
 			showLoading(with: color)
 		case let .success(facts):
+			hideConnectionError()
 			prepareUIForSuccessResult()
 			reloadData(with: facts)
 		case .successWithEmptyResult:
@@ -104,12 +106,19 @@ extension FactsView {
 		case let .failure(error):
 			
 			switch error {
+			case .connection:
+				showConnectionError()
 			case .internal:
 				showInternalError()
 			default:
 				break
 			}
 		}
+	}
+	
+	private func searchTerm() {
+		guard let term = textField.text else { return }
+		setScreenState(for: term)
 	}
 	
 	private func showLoading(with color: UIColor) {
@@ -122,7 +131,7 @@ extension FactsView {
 		setTableViewAlpha(to: 1)
 		hideLoading()
 		setTextFieldAlpha(to: 0)
-		resetTextField()
+		resetTextFieldUI()
 	}
 	
 	private func setTextFieldInteration(to state: Bool) {
@@ -166,9 +175,21 @@ extension FactsView {
 		}
 	}
 	
-	private func resetTextField() {
+	private func resetTextFieldUI() {
 		setTextFieldBackground(to: .white)
 		setTextFieldInteration(to: true)
+	}
+	
+	private func resetTextFieldToOriginalState() {
+		resetTextFieldUI()
+		textField.text = ""
+		setTextFieldAlpha(to: 1)
+	}
+	
+	private func openKeyboard() {
+		DispatchQueue.main.async {
+			self.textField.becomeFirstResponder()
+		}
 	}
 }
 
@@ -178,15 +199,43 @@ extension FactsView {
 	
 	private func showInternalError() {
 		prepareInternalErrorView()
-		hideLoading()
-		setTextFieldAlpha(to: 0)
-		resetTextField()
+		prepareToShowError()
 		internalError?.showAnimated()
 	}
 	
+	private func showConnectionError() {
+		prepareConnectionErrorView()
+		prepareToShowError()
+		connectionError?.showAnimated()
+	}
+	
+	private func prepareToShowError() {
+		hideLoading()
+		setTextFieldAlpha(to: 0)
+		resetTextFieldUI()
+	}
+	
 	private func prepareInternalErrorView() {
-		let erroView = InternalErrorView.makeXib()
-		erroView.setup(for: self)
-		internalError = erroView
+		let errorView = InternalErrorView.makeXib()
+		errorView.setup(for: self)
+		internalError = errorView
+	}
+	
+	private func prepareConnectionErrorView() {
+		let errorView = ConnectionErrorView.makeXib()
+		errorView.setup(for: self)
+		connectionError = errorView
+		errorView.didTapTryAgain = { [weak self] in
+			self?.resetTextFieldToOriginalState()
+			self?.hideConnectionError()
+			self?.openKeyboard()
+		}
+	}
+	
+	private func hideConnectionError() {
+		guard connectionError != nil else { return }
+		connectionError?.removeAnimated { [weak self] in
+			self?.connectionError = nil
+		}
 	}
 }

@@ -32,8 +32,4 @@ final class InternalErrorView: UIView {
 			view.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
 		}
 	}
-	
-	func remove(from superview: UIView) {
-		removeFromSuperview()
-	}
 }

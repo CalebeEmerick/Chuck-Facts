@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ConnectionErrorView" customModule="ChuckFacts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disconnected" translatesAutoresizingMaskIntoConstraints="NO" id="Jdg-UX-UPW">
+                    <rect key="frame" x="40" y="50" width="240" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="SHK-OW-15y"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OPS! Parece que você não está conectado à internet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCZ-F3-jgf">
+                    <rect key="frame" x="40" y="230" width="240" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="1qG-ay-woS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecP-aq-1bJ">
+                    <rect key="frame" x="40" y="396" width="240" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="rE7-CH-KAq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="Verificar Conexão">
+                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="verifyConnectionAction" destination="iN0-l3-epB" eventType="touchUpInside" id="peY-LE-fuR"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verifique sua conexão ou tente novamente." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wg3-Kt-yKb">
+                    <rect key="frame" x="40" y="303" width="240" height="43"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" red="0.40392156862745099" green="0.40392156862745099" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIA-fd-iUY">
+                    <rect key="frame" x="40" y="471" width="240" height="50"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="Tentar Novamente"/>
+                    <connections>
+                        <action selector="tryAgainAction" destination="iN0-l3-epB" eventType="touchUpInside" id="b6P-1Q-Ohh"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Jdg-UX-UPW" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="2uS-Rs-qXE"/>
+                <constraint firstItem="PCZ-F3-jgf" firstAttribute="centerX" secondItem="Jdg-UX-UPW" secondAttribute="centerX" id="C1W-RM-V06"/>
+                <constraint firstItem="wg3-Kt-yKb" firstAttribute="top" secondItem="PCZ-F3-jgf" secondAttribute="bottom" constant="25" id="CVb-oU-k3J"/>
+                <constraint firstItem="mIA-fd-iUY" firstAttribute="top" secondItem="ecP-aq-1bJ" secondAttribute="bottom" constant="25" id="EiV-Pf-scQ"/>
+                <constraint firstItem="mIA-fd-iUY" firstAttribute="trailing" secondItem="ecP-aq-1bJ" secondAttribute="trailing" id="InJ-cx-jjh"/>
+                <constraint firstItem="mIA-fd-iUY" firstAttribute="leading" secondItem="ecP-aq-1bJ" secondAttribute="leading" id="JzO-km-CfW"/>
+                <constraint firstItem="ecP-aq-1bJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="RxX-7s-N6C"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Jdg-UX-UPW" secondAttribute="trailing" constant="40" id="TG2-hZ-fKL"/>
+                <constraint firstItem="wg3-Kt-yKb" firstAttribute="leading" secondItem="PCZ-F3-jgf" secondAttribute="leading" id="aV7-zq-Xw8"/>
+                <constraint firstItem="ecP-aq-1bJ" firstAttribute="top" secondItem="wg3-Kt-yKb" secondAttribute="bottom" constant="50" id="c0F-NH-O89"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ecP-aq-1bJ" secondAttribute="trailing" constant="40" id="eCi-ja-CRq"/>
+                <constraint firstItem="wg3-Kt-yKb" firstAttribute="trailing" secondItem="PCZ-F3-jgf" secondAttribute="trailing" id="i6Z-l6-h9P"/>
+                <constraint firstItem="mIA-fd-iUY" firstAttribute="height" secondItem="ecP-aq-1bJ" secondAttribute="height" id="wbZ-bb-MVt"/>
+                <constraint firstItem="PCZ-F3-jgf" firstAttribute="top" secondItem="Jdg-UX-UPW" secondAttribute="bottom" constant="30" id="xPl-FV-mUw"/>
+                <constraint firstItem="Jdg-UX-UPW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="xZq-iP-0qc"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="tryAgainButton" destination="mIA-fd-iUY" id="d4K-YR-gXF"/>
+                <outlet property="verifyConnectionButton" destination="ecP-aq-1bJ" id="zsa-A7-Lt2"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="disconnected" width="77" height="100"/>
+    </resources>
+</document>
