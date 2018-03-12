@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3419BCE920572294003AEAED /* InternalErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3419BCE820572294003AEAED /* InternalErrorView.xib */; };
+		3419BCEB205722A4003AEAED /* InternalErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419BCEA205722A4003AEAED /* InternalErrorView.swift */; };
+		3419BCEC20572982003AEAED /* FactServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B54AC420518D8100ACC3AE /* FactServiceMock.swift */; };
 		341A0A5E204EFA0500F9E701 /* FactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A0A5D204EFA0500F9E701 /* FactTests.swift */; };
 		341A0A60204EFC1A00F9E701 /* FactCategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A0A5F204EFC1A00F9E701 /* FactCategoryTests.swift */; };
 		341A0A62204EFCFD00F9E701 /* FactModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A0A61204EFCFD00F9E701 /* FactModelTests.swift */; };
@@ -92,6 +95,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3419BCE820572294003AEAED /* InternalErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InternalErrorView.xib; sourceTree = "<group>"; };
+		3419BCEA205722A4003AEAED /* InternalErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalErrorView.swift; sourceTree = "<group>"; };
 		341A0A5D204EFA0500F9E701 /* FactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactTests.swift; sourceTree = "<group>"; };
 		341A0A5F204EFC1A00F9E701 /* FactCategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactCategoryTests.swift; sourceTree = "<group>"; };
 		341A0A61204EFCFD00F9E701 /* FactModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactModelTests.swift; sourceTree = "<group>"; };
@@ -175,6 +180,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3419BCE520572182003AEAED /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				3419BCE72057227C003AEAED /* Internal */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		3419BCE72057227C003AEAED /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				3419BCE820572294003AEAED /* InternalErrorView.xib */,
+				3419BCEA205722A4003AEAED /* InternalErrorView.swift */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
 		341A0A5C204EF9AE00F9E701 /* Fact */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +237,7 @@
 		34298AC8204DC5860003C863 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3419BCE520572182003AEAED /* Error */,
 				34298AE0204DDB680003C863 /* TableView */,
 				34298ADF204DDB5E0003C863 /* Controller */,
 			);
@@ -530,6 +553,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34298ACE204DD8770003C863 /* FactsView.xib in Resources */,
+				3419BCE920572294003AEAED /* InternalErrorView.xib in Resources */,
 				346FB50D204891A9006F962F /* LaunchScreen.storyboard in Resources */,
 				346FB50A204891A9006F962F /* Assets.xcassets in Resources */,
 				34298AE9204DDC0D0003C863 /* FactCell.xib in Resources */,
@@ -593,6 +617,7 @@
 				34AD0EC82049CD6F00B97FF7 /* FactCategory.swift in Sources */,
 				341A0A69204F0C9900F9E701 /* FactURLMaker.swift in Sources */,
 				34298AD6204DDA030003C863 /* CollectionViewReusable.swift in Sources */,
+				3419BCEC20572982003AEAED /* FactServiceMock.swift in Sources */,
 				34901BD92049F9E900C29ADD /* BadRequestError.swift in Sources */,
 				349A647120530AE3001BC728 /* FactScreenErrorType.swift in Sources */,
 				341A0A70204F0E7E00F9E701 /* FactMapperErrorParser.swift in Sources */,
@@ -607,6 +632,7 @@
 				34298AC7204D9FA50003C863 /* FactModel.swift in Sources */,
 				34298ACA204DC5A10003C863 /* FactsController.swift in Sources */,
 				34298AC0204D907A0003C863 /* FactViewModel.swift in Sources */,
+				3419BCEB205722A4003AEAED /* InternalErrorView.swift in Sources */,
 				34901BDB2049FA0100C29ADD /* InternetConnectionError.swift in Sources */,
 				34298AE4204DDB8D0003C863 /* FactsDelegate.swift in Sources */,
 				34298ADE204DDA330003C863 /* ViewCreatable.swift in Sources */,

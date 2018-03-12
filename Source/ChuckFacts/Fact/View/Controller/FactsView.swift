@@ -22,6 +22,8 @@ final class FactsView: UIView {
 	private let delegate = FactsDelegate()
 	private let disposeBag = DisposeBag()
 	
+	private var internalError: InternalErrorView?
+	
 	weak var viewModel: FactViewModel?
 }
 
@@ -100,7 +102,13 @@ extension FactsView {
 		case .successWithEmptyResult:
 			break
 		case let .failure(error):
-			break
+			
+			switch error {
+			case .internal:
+				showInternalError()
+			default:
+				break
+			}
 		}
 	}
 	
@@ -114,8 +122,7 @@ extension FactsView {
 		setTableViewAlpha(to: 1)
 		hideLoading()
 		setTextFieldAlpha(to: 0)
-		setTextFieldBackground(to: .white)
-		setTextFieldInteration(to: true)
+		resetTextField()
 	}
 	
 	private func setTextFieldInteration(to state: Bool) {
@@ -157,5 +164,29 @@ extension FactsView {
 			self.dataSource.facts = facts
 			self.tableView.reloadData()
 		}
+	}
+	
+	private func resetTextField() {
+		setTextFieldBackground(to: .white)
+		setTextFieldInteration(to: true)
+	}
+}
+
+// MARK: - Error Methods -
+
+extension FactsView {
+	
+	private func showInternalError() {
+		prepareInternalErrorView()
+		hideLoading()
+		setTextFieldAlpha(to: 0)
+		resetTextField()
+		internalError?.showAnimated()
+	}
+	
+	private func prepareInternalErrorView() {
+		let erroView = InternalErrorView.makeXib()
+		erroView.setup(for: self)
+		internalError = erroView
 	}
 }
