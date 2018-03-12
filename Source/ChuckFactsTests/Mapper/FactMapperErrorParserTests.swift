@@ -33,7 +33,7 @@ final class FactMapperErrorParserTests: XCTestCase {
 		let serviceError = parser.parse(invalidJSONError)
 		
 		if case let .JSONParse(error) = serviceError {
-			expect(error).to(equal(JSONParseError.modelParse))
+			expect(error).to(equal(JSONParseError.model))
 		}
 		else {
 			fail("Esperava-se ser erro de parse de JSON.")

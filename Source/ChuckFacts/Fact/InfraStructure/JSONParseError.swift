@@ -11,5 +11,5 @@ import Foundation
 enum JSONParseError {
 	
 	case result
-	case modelParse
+	case model
 }
