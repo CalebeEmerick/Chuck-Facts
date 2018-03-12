@@ -43,6 +43,7 @@
                 <constraint firstItem="XOd-LN-EMz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4N3-Pn-nQ0"/>
                 <constraint firstItem="Qih-4W-3an" firstAttribute="top" secondItem="F0u-7V-1PH" secondAttribute="bottom" constant="50" id="GkG-YS-pQ2"/>
                 <constraint firstItem="F0u-7V-1PH" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="80" id="IDr-eX-zDd"/>
+                <constraint firstItem="XOd-LN-EMz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="K2F-qy-TVj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Qih-4W-3an" secondAttribute="trailing" constant="30" id="LgJ-cH-yBE"/>
                 <constraint firstItem="Qih-4W-3an" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="ba5-73-LWI"/>
                 <constraint firstItem="F0u-7V-1PH" firstAttribute="centerX" secondItem="Qih-4W-3an" secondAttribute="centerX" id="gZf-SS-0p8"/>
@@ -50,11 +51,6 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="XOd-LN-EMz" secondAttribute="bottom" id="mNH-80-yYQ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="XOd-LN-EMz"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="imageView" destination="F0u-7V-1PH" id="sK0-rM-cQd"/>
                 <outlet property="tableView" destination="XOd-LN-EMz" id="tMh-5K-UIW"/>

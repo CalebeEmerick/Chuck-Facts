@@ -32,23 +32,33 @@ extension FactsView {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
-		setupImageAnimation()
 		setKeyboardButtonSubscription()
+		setupImageAnimation()
 		setupTableView()
-		
-		
 	}
 }
 
-// MARK: - Methods -
+// MARK: - Setup Methods -
 
 extension FactsView {
 	
-	func reloadData(with facts: [FactModel]) {
-		DispatchQueue.main.async {
-			self.dataSource.facts = facts
-			self.tableView.reloadData()
-		}
+	private func setKeyboardButtonSubscription() {
+		textField.rx.controlEvent(.editingDidEndOnExit)
+			.subscribe(onNext: { [weak self] in
+				let term = self?.textField.text ?? ""
+				self?.setScreenState(for: term)
+			})
+			.disposed(by: disposeBag)
+	}
+	
+	private func setScreenState(for term: String) {
+		viewModel?.search(for: term)
+			.observeOn(MainScheduler.instance)
+			.subscribe(
+				onNext: { [weak self] state in
+					self?.render(state)
+			})
+			.disposed(by: disposeBag)
 	}
 	
 	private func setupTableView() {
@@ -65,25 +75,6 @@ extension FactsView {
 		imageView.animationDuration = 2
 	}
 	
-	private func setKeyboardButtonSubscription() {
-		textField.rx.controlEvent(.editingDidEndOnExit)
-			.subscribe(onNext: { [unowned self] in
-				
-				// trava a textField
-				self.textField.isUserInteractionEnabled = false
-				
-				// pinta o background da textField
-				self.textField.backgroundColor = Color(hexString: "#ddd").color
-				
-				// mostra o loading
-				self.imageView.startAnimating()
-				
-				// chama o request com o parâmetro
-//				self.viewModel?
-			})
-			.disposed(by: disposeBag)
-	}
-	
 	private func getAnimatedImages() -> [UIImage] {
 		var images: [UIImage] = []
 		for index in 1 ... 22 {
@@ -93,18 +84,78 @@ extension FactsView {
 		}
 		return images
 	}
+}
+
+// MARK: - Render Methods -
+
+extension FactsView {
 	
-	private func getScreenState() {
-		viewModel?.getScreenState(from: "car")
-			.subscribeOn(ConcurrentMainScheduler.instance)
-			.subscribe(
-				onNext: { facts in
-					
-					if case let .success(facts) = facts {
-						self.reloadData(with: facts)
-					}
-			}
-			)
-			.disposed(by: disposeBag)
+	private func render(_ state: FactScreenState) {
+		switch state {
+		case let .loading(color):
+			showLoading(with: color)
+		case let .success(facts):
+			prepareUIForSuccessResult()
+			reloadData(with: facts)
+		case .successWithEmptyResult:
+			break
+		case let .failure(error):
+			break
+		}
+	}
+	
+	private func showLoading(with color: UIColor) {
+		setTextFieldInteration(to: false)
+		setTextFieldBackground(to: color)
+		showLoading()
+	}
+	
+	private func prepareUIForSuccessResult() {
+		setTableViewAlpha(to: 1)
+		hideLoading()
+		setTextFieldAlpha(to: 0)
+		setTextFieldBackground(to: .white)
+		setTextFieldInteration(to: true)
+	}
+	
+	private func setTextFieldInteration(to state: Bool) {
+		textField.isUserInteractionEnabled = state
+	}
+	
+	private func setTextFieldBackground(to color: UIColor) {
+		UIView.animate(withDuration: 0.25) {
+			self.textField.backgroundColor = color
+		}
+	}
+	
+	private func showLoading() {
+		DispatchQueue.main.async {
+			self.imageView.startAnimating()
+		}
+	}
+	
+	private func hideLoading() {
+		DispatchQueue.main.async {
+			self.imageView.stopAnimating()
+		}
+	}
+	
+	private func setTableViewAlpha(to alpha: CGFloat) {
+		UIView.animate(withDuration: 0.25) {
+			self.tableView.alpha = alpha
+		}
+	}
+	
+	private func setTextFieldAlpha(to alpha: CGFloat) {
+		UIView.animate(withDuration: 0.25) {
+			self.textField.alpha = alpha
+		}
+	}
+	
+	private func reloadData(with facts: [FactModel]) {
+		DispatchQueue.main.async {
+			self.dataSource.facts = facts
+			self.tableView.reloadData()
+		}
 	}
 }
