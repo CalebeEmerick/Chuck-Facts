@@ -10,7 +10,7 @@ import Foundation
 
 enum InternetConnectionError {
 	
-	case airplaneMode
-	case cellularDataOff
 	case noConnection
+	case timeout
+	case other
 }

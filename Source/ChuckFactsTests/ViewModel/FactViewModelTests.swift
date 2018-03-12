@@ -54,6 +54,8 @@ final class FactViewModelTests: XCTestCase {
 	
 	override func tearDown() {
 		disposeBag = nil
+		viewModel = nil
+		service = nil
 		
 		super.tearDown()
 	}
@@ -101,11 +103,6 @@ final class FactViewModelTests: XCTestCase {
 		let isPipelineEqual = compareResult(with: expectedResult)
 		
 		expect(isPipelineEqual).to(beTrue())
-	}
-	
-	func test_State_ShouldBe_Failure_With_NoInternetConnection() {
-		
-		
 	}
 	
 	func test_State_ShouldBe_Failure_With_NoResults() {

@@ -30,6 +30,7 @@
 		34298AE4204DDB8D0003C863 /* FactsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34298AE3204DDB8D0003C863 /* FactsDelegate.swift */; };
 		34298AE8204DDC0D0003C863 /* FactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34298AE6204DDC0D0003C863 /* FactCell.swift */; };
 		34298AE9204DDC0D0003C863 /* FactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34298AE7204DDC0D0003C863 /* FactCell.xib */; };
+		3440482F2053381D00D977DF /* InternetConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3440482E2053381D00D977DF /* InternetConnectionHandler.swift */; };
 		34529978204DEF9300358BB2 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34529976204DEF9300358BB2 /* Nimble.framework */; };
 		34529979204DEF9300358BB2 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34529977204DEF9300358BB2 /* Quick.framework */; };
 		3452997A204DEFA700358BB2 /* Nimble.framework in Carthage Copy Files */ = {isa = PBXBuildFile; fileRef = 34529976204DEF9300358BB2 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -114,6 +115,7 @@
 		34298AE3204DDB8D0003C863 /* FactsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsDelegate.swift; sourceTree = "<group>"; };
 		34298AE6204DDC0D0003C863 /* FactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactCell.swift; sourceTree = "<group>"; };
 		34298AE7204DDC0D0003C863 /* FactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FactCell.xib; sourceTree = "<group>"; };
+		3440482E2053381D00D977DF /* InternetConnectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionHandler.swift; sourceTree = "<group>"; };
 		34529967204DEE2E00358BB2 /* ChuckFactsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChuckFactsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3452996B204DEE2E00358BB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34529976204DEF9300358BB2 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				34901BD62049F9D500C29ADD /* JSONParseError.swift */,
 				34901BD82049F9E900C29ADD /* BadRequestError.swift */,
 				34901BDA2049FA0100C29ADD /* InternetConnectionError.swift */,
+				3440482E2053381D00D977DF /* InternetConnectionHandler.swift */,
 			);
 			path = InfraStructure;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				34298AD8204DDA030003C863 /* TableViewReusable.swift in Sources */,
 				34298AC5204D9D690003C863 /* FactMapper.swift in Sources */,
 				34298ADB204DDA0E0003C863 /* Color.swift in Sources */,
+				3440482F2053381D00D977DF /* InternetConnectionHandler.swift in Sources */,
 				3452997F204DF37800358BB2 /* InfraStructureHandler.swift in Sources */,
 				34901BD52049F9BC00C29ADD /* ServiceError.swift in Sources */,
 				34AD0EC82049CD6F00B97FF7 /* FactCategory.swift in Sources */,

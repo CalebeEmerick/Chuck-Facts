@@ -31,6 +31,10 @@ final class FactService: FactServiceProtocol {
 		let url = urlMaker.make(from: baseUrl, with: term)
 		
 		let result = RxAlamofire.requestJSON(.get, url)
+			.do(onError: { error in
+				let handler = InternetConnectionHandler()
+				try handler.verify(error)
+			})
 			.do(onNext: { (response, _) in
 				let handler = InfraStructureHandler()
 				try handler.verifySuccessStatusCode(response)

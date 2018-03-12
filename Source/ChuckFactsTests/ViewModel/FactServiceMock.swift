@@ -33,8 +33,6 @@ final class FactServiceMock: FactServiceProtocol {
 		case .successWithEmptyResult:
 			fillWithEmptyResult()
 			setResponseForStatus(code: 200)
-		case .connectionError:
-			break
 		case .noResultsForTerm:
 			setResponseForStatus(code: 422)
 		case .invalidTerm:
@@ -75,7 +73,6 @@ final class FactServiceMock: FactServiceProtocol {
 	enum FactScreenStateMock {
 		case success
 		case successWithEmptyResult
-		case connectionError
 		case noResultsForTerm
 		case invalidTerm
 		case `internal`
