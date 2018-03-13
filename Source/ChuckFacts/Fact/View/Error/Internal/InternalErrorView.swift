@@ -10,8 +10,8 @@ import UIKit
 
 final class InternalErrorView: UIView {
 	
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
+	override func awakeFromNib() {
+		super.awakeFromNib()
 		
 		alpha = 0
 	}

@@ -101,7 +101,6 @@ extension FactsView {
 				self?.showLoading(with: color)
 			}
 		case let .success(facts):
-			hideConnectionError()
 			prepareUIForSuccessResult()
 			reloadData(with: facts)
 		case .successWithEmptyResult:
@@ -285,6 +284,7 @@ extension FactsView {
 		errorView.setup(for: self)
 		connectionError = errorView
 		errorView.didTapTryAgain = { [weak self] in
+			self?.hideLoading()
 			self?.resetTextFieldToOriginalState()
 			self?.hideConnectionError()
 			self?.openKeyboard()

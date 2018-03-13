@@ -29,19 +29,19 @@ final class ConnectionErrorView: UIView {
 		viewModel = ConnectionErrorViewModel()
 		
 		super.init(coder: aDecoder)
-		
-		alpha = 0
 	}
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
+		
+		alpha = 0
 		
 		makeBorder(for: verifyConnectionButton)
 		makeBorder(for: tryAgainButton)
 	}
 	
 	func showAnimated() {
-		DispatchQueue.main.async {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
 			UIView.animate(withDuration: 0.25) {
 				self.alpha = 1
 			}
