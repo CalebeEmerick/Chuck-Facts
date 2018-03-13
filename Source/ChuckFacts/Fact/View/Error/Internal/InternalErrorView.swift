@@ -26,10 +26,10 @@ final class InternalErrorView: UIView {
 		translatesAutoresizingMaskIntoConstraints = false
 		DispatchQueue.main.async {
 			view.addSubview(self)
-			view.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-			view.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-			view.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-			view.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+			self.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+			self.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+			self.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+			self.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 		}
 	}
 }

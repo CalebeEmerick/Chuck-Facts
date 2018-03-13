@@ -24,6 +24,7 @@ final class FactsView: UIView {
 	
 	private var internalError: InternalErrorView?
 	private var connectionError: ConnectionErrorView?
+	private var emptyResult: FactEmptyResultView?
 	
 	weak var viewModel: FactViewModel?
 }
@@ -96,23 +97,30 @@ extension FactsView {
 	private func render(_ state: FactScreenState) {
 		switch state {
 		case let .loading(color):
-			showLoading(with: color)
+			showLoadingAndHideEmptyResultIfNeeded { [weak self] in
+				self?.showLoading(with: color)
+			}
 		case let .success(facts):
 			hideConnectionError()
 			prepareUIForSuccessResult()
 			reloadData(with: facts)
 		case .successWithEmptyResult:
-			break
+			showEmptyResultView()
 		case let .failure(error):
-			
-			switch error {
-			case .connection:
-				showConnectionError()
-			case .internal:
-				showInternalError()
-			default:
-				break
-			}
+			showFailure(for: error)
+		}
+	}
+	
+	private func showFailure(for error: FactScreenErrorType) {
+		switch error {
+		case .connection:
+			showConnectionError()
+		case .internal:
+			showInternalError()
+		case .invalidTerm:
+			break
+		case .noResults:
+			showEmptyResultView()
 		}
 	}
 	
@@ -182,13 +190,64 @@ extension FactsView {
 	
 	private func resetTextFieldToOriginalState() {
 		resetTextFieldUI()
-		textField.text = ""
+		cleanTextField()
 		setTextFieldAlpha(to: 1)
 	}
 	
 	private func openKeyboard() {
 		DispatchQueue.main.async {
 			self.textField.becomeFirstResponder()
+		}
+	}
+	
+	private func cleanTextField() {
+		textField.text = ""
+	}
+}
+
+// MARK: - Empty Result -
+
+extension FactsView {
+	
+	private var isEmptyResultShowing: Bool {
+		return emptyResult != nil
+	}
+	
+	private func showEmptyResultView() {
+		hideLoading()
+		showEmptyResult()
+		openKeyboard()
+		cleanTextField()
+		resetTextFieldUI()
+	}
+	
+	private func prepareToShowEmptyResult() {
+		let emptyResult = FactEmptyResultView.makeXib()
+		emptyResult.setup(for: self)
+		self.emptyResult = emptyResult
+	}
+	
+	private func showEmptyResult() {
+		prepareToShowEmptyResult()
+		emptyResult?.showAnimated()
+	}
+	
+	private func hideEmptyResult(and handle: @escaping () -> Void) {
+		guard isEmptyResultShowing else { return }
+		emptyResult?.removeAnimated { [weak self] in
+			self?.emptyResult = nil
+			handle()
+		}
+	}
+	
+	private func showLoadingAndHideEmptyResultIfNeeded(loading: @escaping () -> Void) {
+		if isEmptyResultShowing {
+			hideEmptyResult {
+				loading()
+			}
+		}
+		else {
+			loading()
 		}
 	}
 }
@@ -199,17 +258,17 @@ extension FactsView {
 	
 	private func showInternalError() {
 		prepareInternalErrorView()
-		prepareToShowError()
+		prepareToShowFullScreenError()
 		internalError?.showAnimated()
 	}
 	
 	private func showConnectionError() {
 		prepareConnectionErrorView()
-		prepareToShowError()
+		prepareToShowFullScreenError()
 		connectionError?.showAnimated()
 	}
 	
-	private func prepareToShowError() {
+	private func prepareToShowFullScreenError() {
 		hideLoading()
 		setTextFieldAlpha(to: 0)
 		resetTextFieldUI()
