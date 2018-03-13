@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33E995A5205868C70037ECA9 /* TestsExtented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995A4205868C70037ECA9 /* TestsExtented.swift */; };
 		341A0A5E204EFA0500F9E701 /* FactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A0A5D204EFA0500F9E701 /* FactTests.swift */; };
 		341A0A60204EFC1A00F9E701 /* FactCategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A0A5F204EFC1A00F9E701 /* FactCategoryTests.swift */; };
 		341A0A62204EFCFD00F9E701 /* FactModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A0A61204EFCFD00F9E701 /* FactModelTests.swift */; };
@@ -92,6 +93,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		33E995A4205868C70037ECA9 /* TestsExtented.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsExtented.swift; sourceTree = "<group>"; };
 		341A0A5D204EFA0500F9E701 /* FactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactTests.swift; sourceTree = "<group>"; };
 		341A0A5F204EFC1A00F9E701 /* FactCategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactCategoryTests.swift; sourceTree = "<group>"; };
 		341A0A61204EFCFD00F9E701 /* FactModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactModelTests.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				341A0A5C204EF9AE00F9E701 /* Fact */,
 				34529982204EE60400358BB2 /* Mapper */,
 				3452997C204DEFFD00358BB2 /* InfraStructure */,
+				33E995A4205868C70037ECA9 /* TestsExtented.swift */,
 				3452996B204DEE2E00358BB2 /* Info.plist */,
 			);
 			path = ChuckFactsTests;
@@ -572,6 +575,7 @@
 				34529984204EE61700358BB2 /* FactMapperTests.swift in Sources */,
 				341A0A60204EFC1A00F9E701 /* FactCategoryTests.swift in Sources */,
 				34B54AC520518D8100ACC3AE /* FactServiceMock.swift in Sources */,
+				33E995A5205868C70037ECA9 /* TestsExtented.swift in Sources */,
 				341A0A62204EFCFD00F9E701 /* FactModelTests.swift in Sources */,
 				34529981204ED36B00358BB2 /* InfraStructureHandlerTests.swift in Sources */,
 				341A0A5E204EFA0500F9E701 /* FactTests.swift in Sources */,

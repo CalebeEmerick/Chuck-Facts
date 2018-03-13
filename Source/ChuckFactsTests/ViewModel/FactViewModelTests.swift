@@ -10,165 +10,145 @@
 import Nimble
 import RxSwift
 import RxTest
-import RxBlocking
 import XCTest
 
 final class FactViewModelTests: XCTestCase {
-	
-	private var disposeBag: DisposeBag!
-	private var service: FactServiceMock!
-	private var viewModel: FactViewModel!
-	
-	private let scheduler = TestScheduler(initialClock: 0)
-	private var observer: TestableObserver<FactScreenState>!
-	
-	private var expectedLoadingColor = Color(hexString: "f5f5f5").color
-	
-	private func setServiceState(for state: FactServiceMock.FactScreenStateMock = .success) {
-		service = FactServiceMock(desired: state)
-		viewModel = FactViewModel(service: service)
-	}
-	
-	private func searchSomeTerm() {
-		viewModel.search(for: "some term")
-			.subscribe(observer)
-			.disposed(by: disposeBag)
-		
-		scheduler.start()
-	}
-	
-	private func compareResult(with expectedResult: [Recorded<Event<FactScreenState>>])
-		-> Bool {
-		
-		let gotResult = observer.events
-		
-		return gotResult == expectedResult
-	}
-	
-	override func setUp() {
-		super.setUp()
-		
-		observer = scheduler.createObserver(FactScreenState.self)
-		disposeBag = DisposeBag()
-	}
-	
-	override func tearDown() {
-		disposeBag = nil
-		viewModel = nil
-		service = nil
-		
-		super.tearDown()
-	}
-	
-	func test_InitialState_ShouldBe_Loading() {
-		
-		setServiceState()
-		searchSomeTerm()
-		
-		let gotState = observer.events.first!
-		let expectedState = next(0, FactScreenState.loading(expectedLoadingColor))
-		
-		let isStateEqual = gotState == expectedState
-		
-		expect(isStateEqual).to(beTrue())
-	}
-	
-	func test_State_ShouldBe_Success_With_FactsList() {
-		
-		setServiceState()
-		searchSomeTerm()
-		
-		let expectedResult = [
-			next(0, FactScreenState.loading(expectedLoadingColor)),
-			next(0, FactScreenState.success(service.expectedSuccessWithFacts)),
-			completed(0)
-		]
-		
-		let isPipelineEqual = compareResult(with: expectedResult)
-		
-		expect(isPipelineEqual).to(beTrue())
-	}
-	
-	func test_State_ShouldBe_SuccessWithEmptyResult() {
-		
-		setServiceState(for: .successWithEmptyResult)
-		searchSomeTerm()
-		
-		let expectedResult = [
-			next(0, FactScreenState.loading(expectedLoadingColor)),
-			next(0, FactScreenState.successWithEmptyResult),
-			completed(0)
-		]
-		
-		let isPipelineEqual = compareResult(with: expectedResult)
-		
-		expect(isPipelineEqual).to(beTrue())
-	}
-	
-	func test_State_ShouldBe_Failure_With_NoResults() {
-		
-		setServiceState(for: .noResultsForTerm)
-		searchSomeTerm()
-		
-		let expectedResult = [
-			next(0, FactScreenState.loading(expectedLoadingColor)),
-			next(0, FactScreenState.failure(.noResults)),
-			completed(0)
-		]
-		
-		let isPipelineEqual = compareResult(with: expectedResult)
-		
-		expect(isPipelineEqual).to(beTrue())
-	}
-	
-	func test_State_ShouldBe_Failure_With_InvalidTerm() {
-		
-		setServiceState(for: .invalidTerm)
-		searchSomeTerm()
-		
-		let expectedResult = [
-			next(0, FactScreenState.loading(expectedLoadingColor)),
-			next(0, FactScreenState.failure(.invalidTerm)),
-			completed(0)
-		]
-		
-		let isPipelineEqual = compareResult(with: expectedResult)
-		
-		expect(isPipelineEqual).to(beTrue())
-	}
-	
-	func test_State_ShouldBe_Failure_With_InternalError() {
-		
-		setServiceState(for: .internal)
-		searchSomeTerm()
-		
-		let expectedResult = [
-			next(0, FactScreenState.loading(expectedLoadingColor)),
-			next(0, FactScreenState.failure(.internal)),
-			completed(0)
-		]
-		
-		let isPipelineEqual = compareResult(with: expectedResult)
-		
-		expect(isPipelineEqual).to(beTrue())
-	}
-}
-
-func ==<T>(lhs: [RxTest.Recorded<RxSwift.Event<T>>],
-						rhs: [RxTest.Recorded<RxSwift.Event<T>>])
-	-> Bool where T : Equatable {
-		
-		var isEqual = true
-		
-		guard lhs.count == rhs.count else { return false }
-		
-		for index in 0 ..< lhs.count {
-			
-			if !(lhs[index] == rhs[index]) {
-				isEqual = false
-				break
-			}
-		}
-		
-		return isEqual
+    
+    private var disposeBag: DisposeBag!
+    private var service: FactServiceMock!
+    private var viewModel: FactViewModel!
+    
+    private let scheduler = TestScheduler(initialClock: 0)
+    private var observer: TestableObserver<FactScreenState>!
+    
+    private var expectedLoadingColor = Color(hexString: "f5f5f5").color
+    
+    private func setServiceState(for state: FactServiceMock.FactScreenStateMock = .success) {
+        service = FactServiceMock(desired: state)
+        viewModel = FactViewModel(service: service)
+    }
+    
+    private func searchSomeTerm() {
+        viewModel.search(for: "some term")
+            .subscribe(observer)
+            .disposed(by: disposeBag)
+        
+        scheduler.start()
+    }
+    
+    private func compareResult(with expectedResult: [Recorded<Event<FactScreenState>>])
+        -> Bool {
+            
+            let gotResult = observer.events
+            
+            return gotResult == expectedResult
+    }
+    
+    override func setUp() {
+        super.setUp()
+        
+        observer = scheduler.createObserver(FactScreenState.self)
+        disposeBag = DisposeBag()
+    }
+    
+    override func tearDown() {
+        disposeBag = nil
+        viewModel = nil
+        service = nil
+        
+        super.tearDown()
+    }
+    
+    func test_InitialState_ShouldBe_Loading() {
+        
+        setServiceState()
+        searchSomeTerm()
+        
+        let gotState = observer.events.first!
+        let expectedState = onNext(expect: FactScreenState.loading(expectedLoadingColor))
+        
+        let isStateEqual = gotState == expectedState
+        
+        expect(isStateEqual).to(beTrue())
+    }
+    
+    func test_State_ShouldBe_Success_With_FactsList() {
+        
+        setServiceState()
+        searchSomeTerm()
+        
+        let expectedResult = [
+            onNext(expect: FactScreenState.loading(expectedLoadingColor)),
+            onNext(expect: FactScreenState.success(service.expectedSuccessWithFacts)),
+            completed()
+        ]
+        
+        let isPipelineEqual = compareResult(with: expectedResult)
+        
+        expect(isPipelineEqual).to(beTrue())
+    }
+    
+    func test_State_ShouldBe_SuccessWithEmptyResult() {
+        
+        setServiceState(for: .successWithEmptyResult)
+        searchSomeTerm()
+        
+        let expectedResult = [
+            onNext(expect: FactScreenState.loading(expectedLoadingColor)),
+            onNext(expect: FactScreenState.successWithEmptyResult),
+            completed()
+        ]
+        
+        let isPipelineEqual = compareResult(with: expectedResult)
+        
+        expect(isPipelineEqual).to(beTrue())
+    }
+    
+    func test_State_ShouldBe_Failure_With_NoResults() {
+        
+        setServiceState(for: .noResultsForTerm)
+        searchSomeTerm()
+        
+        let expectedResult = [
+            onNext(expect: FactScreenState.loading(expectedLoadingColor)),
+            onNext(expect: FactScreenState.failure(.noResults)),
+            completed()
+        ]
+        
+        let isPipelineEqual = compareResult(with: expectedResult)
+        
+        expect(isPipelineEqual).to(beTrue())
+    }
+    
+    func test_State_ShouldBe_Failure_With_InvalidTerm() {
+        
+        setServiceState(for: .invalidTerm)
+        searchSomeTerm()
+        
+        let expectedResult = [
+            onNext(expect: FactScreenState.loading(expectedLoadingColor)),
+            onNext(expect: FactScreenState.failure(.invalidTerm)),
+            completed()
+        ]
+        
+        let isPipelineEqual = compareResult(with: expectedResult)
+        
+        expect(isPipelineEqual).to(beTrue())
+    }
+    
+    func test_State_ShouldBe_Failure_With_InternalError() {
+        
+        setServiceState(for: .internal)
+        searchSomeTerm()
+        
+        let expectedResult = [
+            onNext(expect: FactScreenState.loading(expectedLoadingColor)),
+            onNext(expect: FactScreenState.failure(.internal)),
+            completed()
+        ]
+        
+        let isPipelineEqual = compareResult(with: expectedResult)
+        
+        expect(isPipelineEqual).to(beTrue())
+    }
 }
