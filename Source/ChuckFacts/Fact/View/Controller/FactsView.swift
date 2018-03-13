@@ -25,6 +25,7 @@ final class FactsView: UIView {
 	private var internalError: InternalErrorView?
 	private var connectionError: ConnectionErrorView?
 	private var emptyResult: FactEmptyResultView?
+	private var invalidTerm: FactInvalidTermView?
 	
 	weak var viewModel: FactViewModel?
 }
@@ -97,7 +98,7 @@ extension FactsView {
 	private func render(_ state: FactScreenState) {
 		switch state {
 		case let .loading(color):
-			showLoadingAndHideEmptyResultIfNeeded { [weak self] in
+			showLoadingHidingPartialView { [weak self] in
 				self?.showLoading(with: color)
 			}
 		case let .success(facts):
@@ -117,7 +118,7 @@ extension FactsView {
 		case .internal:
 			showInternalError()
 		case .invalidTerm:
-			break
+			showInvalidTermError()
 		case .noResults:
 			showEmptyResultView()
 		}
@@ -213,8 +214,12 @@ extension FactsView {
 	}
 	
 	private func showEmptyResultView() {
-		hideLoading()
+		prepareToShowPartialView()
 		showEmptyResult()
+	}
+	
+	private func prepareToShowPartialView() {
+		hideLoading()
 		openKeyboard()
 		cleanTextField()
 		resetTextFieldUI()
@@ -239,13 +244,17 @@ extension FactsView {
 		}
 	}
 	
-	private func showLoadingAndHideEmptyResultIfNeeded(loading: @escaping () -> Void) {
-		if isEmptyResultShowing {
+	private func showLoadingHidingPartialView(loading: @escaping () -> Void) {
+		switch partialViewShowing {
+		case .emptyResult:
 			hideEmptyResult {
 				loading()
 			}
-		}
-		else {
+		case .invalidTerm:
+			hideInvalidTerm {
+				loading()
+			}
+		case .none:
 			loading()
 		}
 	}
@@ -254,6 +263,10 @@ extension FactsView {
 // MARK: - Error Methods -
 
 extension FactsView {
+	
+	private var isInvalidTermShowing: Bool {
+		return invalidTerm != nil
+	}
 	
 	private func showInternalError() {
 		prepareInternalErrorView()
@@ -267,6 +280,12 @@ extension FactsView {
 		connectionError?.showAnimated()
 	}
 	
+	private func showInvalidTermError() {
+		prepareInvalidTermView()
+		prepareToShowPartialView()
+		invalidTerm?.showAnimated()
+	}
+	
 	private func prepareToShowFullScreenError() {
 		hideLoading()
 		setTextFieldAlpha(to: 0)
@@ -277,6 +296,13 @@ extension FactsView {
 		let errorView = InternalErrorView.makeXib()
 		errorView.setup(for: self)
 		internalError = errorView
+	}
+	
+	private func prepareInvalidTermView() {
+		let invalidTerm = FactInvalidTermView.makeXib()
+		invalidTerm.setup(for: self)
+		invalidTerm.showAnimated()
+		self.invalidTerm = invalidTerm
 	}
 	
 	private func prepareConnectionErrorView() {
@@ -296,5 +322,31 @@ extension FactsView {
 		connectionError?.removeAnimated { [weak self] in
 			self?.connectionError = nil
 		}
+	}
+	
+	private func hideInvalidTerm(and handle: @escaping () -> Void) {
+		guard isInvalidTermShowing else { return }
+		invalidTerm?.removeAnimated { [weak self] in
+			self?.invalidTerm = nil
+			handle()
+		}
+	}
+	
+	private var partialViewShowing: PartialViewShowing {
+		if invalidTerm != nil {
+			return .invalidTerm
+		}
+		else if emptyResult != nil {
+			return .emptyResult
+		}
+		else {
+			return .none
+		}
+	}
+	
+	private enum PartialViewShowing {
+		case invalidTerm
+		case emptyResult
+		case none
 	}
 }

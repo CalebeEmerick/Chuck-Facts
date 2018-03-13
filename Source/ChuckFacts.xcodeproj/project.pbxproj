@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		33E9959F205843EC0037ECA9 /* FactEmptyResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33E9959E205843EC0037ECA9 /* FactEmptyResultView.xib */; };
 		33E995A1205843F80037ECA9 /* FactEmptyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995A0205843F80037ECA9 /* FactEmptyResultView.swift */; };
+		33E995A5205868C70037ECA9 /* TestsExtented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995A4205868C70037ECA9 /* TestsExtented.swift */; };
+		33E995A8205875220037ECA9 /* FactInvalidTermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995A7205875220037ECA9 /* FactInvalidTermView.swift */; };
+		33E995AA2058753D0037ECA9 /* FactInvalidTermView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33E995A92058753D0037ECA9 /* FactInvalidTermView.xib */; };
 		3419BCE920572294003AEAED /* InternalErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3419BCE820572294003AEAED /* InternalErrorView.xib */; };
 		3419BCEB205722A4003AEAED /* InternalErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419BCEA205722A4003AEAED /* InternalErrorView.swift */; };
 		3419BCEC20572982003AEAED /* FactServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B54AC420518D8100ACC3AE /* FactServiceMock.swift */; };
 		3419BCEF20573197003AEAED /* ConnectionErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3419BCEE20573197003AEAED /* ConnectionErrorView.xib */; };
 		3419BCF1205731A7003AEAED /* ConnectionErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419BCF0205731A7003AEAED /* ConnectionErrorView.swift */; };
 		3419BCF3205737F6003AEAED /* ConnectionErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419BCF2205737F6003AEAED /* ConnectionErrorViewModel.swift */; };
-		33E995A5205868C70037ECA9 /* TestsExtented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995A4205868C70037ECA9 /* TestsExtented.swift */; };
 		341A0A5E204EFA0500F9E701 /* FactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A0A5D204EFA0500F9E701 /* FactTests.swift */; };
 		341A0A60204EFC1A00F9E701 /* FactCategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A0A5F204EFC1A00F9E701 /* FactCategoryTests.swift */; };
 		341A0A62204EFCFD00F9E701 /* FactModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A0A61204EFCFD00F9E701 /* FactModelTests.swift */; };
@@ -103,12 +105,14 @@
 /* Begin PBXFileReference section */
 		33E9959E205843EC0037ECA9 /* FactEmptyResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FactEmptyResultView.xib; sourceTree = "<group>"; };
 		33E995A0205843F80037ECA9 /* FactEmptyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactEmptyResultView.swift; sourceTree = "<group>"; };
+		33E995A4205868C70037ECA9 /* TestsExtented.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsExtented.swift; sourceTree = "<group>"; };
+		33E995A7205875220037ECA9 /* FactInvalidTermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactInvalidTermView.swift; sourceTree = "<group>"; };
+		33E995A92058753D0037ECA9 /* FactInvalidTermView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FactInvalidTermView.xib; sourceTree = "<group>"; };
 		3419BCE820572294003AEAED /* InternalErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InternalErrorView.xib; sourceTree = "<group>"; };
 		3419BCEA205722A4003AEAED /* InternalErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalErrorView.swift; sourceTree = "<group>"; };
 		3419BCEE20573197003AEAED /* ConnectionErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionErrorView.xib; sourceTree = "<group>"; };
 		3419BCF0205731A7003AEAED /* ConnectionErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorView.swift; sourceTree = "<group>"; };
 		3419BCF2205737F6003AEAED /* ConnectionErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorViewModel.swift; sourceTree = "<group>"; };
-		33E995A4205868C70037ECA9 /* TestsExtented.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsExtented.swift; sourceTree = "<group>"; };
 		341A0A5D204EFA0500F9E701 /* FactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactTests.swift; sourceTree = "<group>"; };
 		341A0A5F204EFC1A00F9E701 /* FactCategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactCategoryTests.swift; sourceTree = "<group>"; };
 		341A0A61204EFCFD00F9E701 /* FactModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactModelTests.swift; sourceTree = "<group>"; };
@@ -201,9 +205,19 @@
 			path = EmptyResult;
 			sourceTree = "<group>";
 		};
+		33E995A6205875000037ECA9 /* InvalidTerm */ = {
+			isa = PBXGroup;
+			children = (
+				33E995A92058753D0037ECA9 /* FactInvalidTermView.xib */,
+				33E995A7205875220037ECA9 /* FactInvalidTermView.swift */,
+			);
+			path = InvalidTerm;
+			sourceTree = "<group>";
+		};
 		3419BCE520572182003AEAED /* Error */ = {
 			isa = PBXGroup;
 			children = (
+				33E995A6205875000037ECA9 /* InvalidTerm */,
 				3419BCED20573188003AEAED /* Connection */,
 				3419BCE72057227C003AEAED /* Internal */,
 			);
@@ -589,6 +603,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33E995AA2058753D0037ECA9 /* FactInvalidTermView.xib in Resources */,
 				34298ACE204DD8770003C863 /* FactsView.xib in Resources */,
 				3419BCE920572294003AEAED /* InternalErrorView.xib in Resources */,
 				346FB50D204891A9006F962F /* LaunchScreen.storyboard in Resources */,
@@ -676,6 +691,7 @@
 				34298AC0204D907A0003C863 /* FactViewModel.swift in Sources */,
 				3419BCEB205722A4003AEAED /* InternalErrorView.swift in Sources */,
 				34901BDB2049FA0100C29ADD /* InternetConnectionError.swift in Sources */,
+				33E995A8205875220037ECA9 /* FactInvalidTermView.swift in Sources */,
 				33E995A1205843F80037ECA9 /* FactEmptyResultView.swift in Sources */,
 				34298AE4204DDB8D0003C863 /* FactsDelegate.swift in Sources */,
 				34298ADE204DDA330003C863 /* ViewCreatable.swift in Sources */,

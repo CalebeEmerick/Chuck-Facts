@@ -1,5 +1,5 @@
 //
-//  FactEmptyResultView.swift
+//  FactInvalidTermView.swift
 //  ChuckFacts
 //
 //  Created by Calebe Emerik  | Stone on 13/03/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class FactEmptyResultView: UIView {
+final class FactInvalidTermView: UIView {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
