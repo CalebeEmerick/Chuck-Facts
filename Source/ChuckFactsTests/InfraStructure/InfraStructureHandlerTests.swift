@@ -30,7 +30,7 @@ final class InfraStructureHandlerTests: XCTestCase {
 			try self.handler.verifySuccessStatusCode(response)
 			}.to(throwError { (error: ServiceError) in
 				if case let .badRequest(error) = error {
-					expect(error).to(equal(BadRequestError.noResults))
+					expect(error).to(equal(expectedError))
 				}
 				else {
 					fail("Esperava-se ser um BadRequest error.")
@@ -50,14 +50,14 @@ final class InfraStructureHandlerTests: XCTestCase {
 		super.tearDown()
 	}
 	
-	func test_shouldThrow_InvalidTermError_When_StatusCodeIs_422() {
+	func test_ShouldThrow_NoResultsError_When_StatusCodeIs_422() {
 		
 		let response = getResponseFor(status: 422)
 		
 		verify(response, equalTo: .noResults)
 	}
 	
-	func test_shouldThrow_NotFoundError_When_StatusCodeIs_404() {
+	func test_ShouldThrow_InvalidTermError_When_StatusCodeIs_404() {
 		
 		let response = getResponseFor(status: 404)
 		
@@ -82,7 +82,7 @@ final class InfraStructureHandlerTests: XCTestCase {
 			})
 	}
 	
-	func test_shouldNotThrow_Error_When_ReceiveSuccessulStatusCode() {
+	func test_shouldNotThrowError_When_ReceiveSuccessulStatusCode() {
 		
 		let response = getResponseFor(status: 200)
 		
