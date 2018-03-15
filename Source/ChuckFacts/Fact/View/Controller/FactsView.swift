@@ -98,9 +98,7 @@ extension FactsView {
 	private func render(_ state: FactScreenState) {
 		switch state {
 		case let .loading(color):
-			showLoadingHidingPartialView { [weak self] in
-				self?.showLoading(with: color)
-			}
+			showLoadingHidingPartialView(color)
 		case let .success(facts):
 			prepareUIForSuccessResult()
 			reloadData(with: facts)
@@ -244,18 +242,18 @@ extension FactsView {
 		}
 	}
 	
-	private func showLoadingHidingPartialView(loading: @escaping () -> Void) {
+	private func showLoadingHidingPartialView(_ color: UIColor) {
 		switch partialViewShowing {
 		case .emptyResult:
-			hideEmptyResult {
-				loading()
+			hideEmptyResult { [weak self] in
+				self?.showLoading(with: color)
 			}
 		case .invalidTerm:
-			hideInvalidTerm {
-				loading()
+			hideInvalidTerm { [weak self] in
+				self?.showLoading(with: color)
 			}
 		case .none:
-			loading()
+			showLoading(with: color)
 		}
 	}
 }

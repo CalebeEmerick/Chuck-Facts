@@ -17,8 +17,10 @@ final class InternalErrorView: UIView {
 	}
 	
 	func showAnimated() {
-		UIView.animate(withDuration: 0.25) {
-			self.alpha = 1
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+			UIView.animate(withDuration: 0.25) {
+				self.alpha = 1
+			}
 		}
 	}
 	

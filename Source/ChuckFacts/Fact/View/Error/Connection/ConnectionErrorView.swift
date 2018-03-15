@@ -41,7 +41,7 @@ final class ConnectionErrorView: UIView {
 	}
 	
 	func showAnimated() {
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 			UIView.animate(withDuration: 0.25) {
 				self.alpha = 1
 			}

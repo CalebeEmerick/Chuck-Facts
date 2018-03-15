@@ -17,7 +17,7 @@ final class FactEmptyResultView: UIView {
 	}
 	
 	func showAnimated() {
-		DispatchQueue.main.async {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 			UIView.animate(withDuration: 0.25) {
 				self.alpha = 1
 			}

@@ -18,8 +18,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 		let screenBounds = UIScreen.main.bounds
 		let window = UIWindow(frame: screenBounds)
 		
-//		let service = FactServiceMock(desired: FactServiceMock.FactScreenStateMock.invalidTerm)
-		let service = FactService(url: "https://api.chucknorris.io/jokes/searc")
+		let service = FactService()
 		let rootController = FactsController(service: service)
 		let rootNavigation = UINavigationController(rootViewController: rootController)
 		
