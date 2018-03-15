@@ -29,30 +29,24 @@ final class FactService: FactServiceProtocol {
 		
 		let urlMaker = FactURLMaker()
 		let url = urlMaker.make(from: baseUrl, with: term)
+		let handler = InfraStructureHandler()
 		
-		let result = RxAlamofire.requestJSON(.get, url)
+		return RxAlamofire.request(.get, url)
+			.responseData()
+			.do(onNext: { (response, data) in
+				try handler.verifySuccessStatusCode(response)
+			})
 			.do(onError: { error in
 				let handler = InternetConnectionHandler()
 				try handler.verify(error)
 			})
-			.do(onNext: { (response, _) in
-				let handler = InfraStructureHandler()
-				try handler.verifySuccessStatusCode(response)
+			.map({ [unowned self] (_, data) -> [Fact] in
+				let json = try handler.mapDataToJSON(data)
+				return try self.mapJSONToFacts(json)
 			})
-			.map { (_, result) -> JSON in
-				let handler = InfraStructureHandler()
-				let json = try handler.mapResultToJSON(result)
-				return json
-			}
-			.map({ [unowned self] json in
-				try self.mapJSONToFacts(json)
-			})
-		
-		return result
 	}
 	
 	private func mapJSONToFacts(_ json: JSON) throws -> [Fact] {
-		
 		do {
 			let facts = try mapper.map(json)
 			return facts

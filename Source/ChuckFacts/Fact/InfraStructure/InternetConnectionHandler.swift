@@ -12,14 +12,14 @@ final class InternetConnectionHandler {
 	
 	func verify(_ error: Error) throws {
 		
-		guard let urlError = error as? URLError else {
-			throw ServiceError.connection(.other)
+		guard let urlError = error as? URLError.Code else {
+			throw error
 		}
 		
-		if urlError.code == URLError.notConnectedToInternet {
+		if urlError == .notConnectedToInternet {
 			throw ServiceError.connection(.noConnection)
 		}
-		else if urlError.code == URLError.timedOut {
+		else if urlError == .timedOut {
 			throw ServiceError.connection(.timeout)
 		}
 		else {

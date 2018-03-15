@@ -6,8 +6,11 @@
 //  Copyright © 2018 Stone Pagamentos. All rights reserved.
 //
 
+import Foundation
 import RxSwift
 import RxTest
+
+extension URLError.Code: Error {}
 
 public func onNext<T>(expect element: T) -> RxTest.Recorded<RxSwift.Event<T>> {
 	return next(0, element)

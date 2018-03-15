@@ -18,11 +18,11 @@ final class InfraStructureHandler {
 		}
 	}
 	
-	func mapResultToJSON(_ result: Any) throws -> JSON {
+	func mapDataToJSON(_ data: Data) throws -> JSON {
 		
-		guard let json = result as? JSON else {
-			let serviceError = ServiceError.JSONParse(.result)
-			throw serviceError
+		guard let result = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
+			let json = result as? JSON else {
+				throw ServiceError.JSONParse(.result)
 		}
 		
 		return json

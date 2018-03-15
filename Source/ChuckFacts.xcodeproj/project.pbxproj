@@ -12,9 +12,9 @@
 		33E995A5205868C70037ECA9 /* TestsExtented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995A4205868C70037ECA9 /* TestsExtented.swift */; };
 		33E995A8205875220037ECA9 /* FactInvalidTermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995A7205875220037ECA9 /* FactInvalidTermView.swift */; };
 		33E995AA2058753D0037ECA9 /* FactInvalidTermView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33E995A92058753D0037ECA9 /* FactInvalidTermView.xib */; };
+		33E995AE205AC4300037ECA9 /* InternetConnectionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995AD205AC4300037ECA9 /* InternetConnectionHandlerTests.swift */; };
 		3419BCE920572294003AEAED /* InternalErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3419BCE820572294003AEAED /* InternalErrorView.xib */; };
 		3419BCEB205722A4003AEAED /* InternalErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419BCEA205722A4003AEAED /* InternalErrorView.swift */; };
-		3419BCEC20572982003AEAED /* FactServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B54AC420518D8100ACC3AE /* FactServiceMock.swift */; };
 		3419BCEF20573197003AEAED /* ConnectionErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3419BCEE20573197003AEAED /* ConnectionErrorView.xib */; };
 		3419BCF1205731A7003AEAED /* ConnectionErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419BCF0205731A7003AEAED /* ConnectionErrorView.swift */; };
 		3419BCF3205737F6003AEAED /* ConnectionErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419BCF2205737F6003AEAED /* ConnectionErrorViewModel.swift */; };
@@ -108,6 +108,7 @@
 		33E995A4205868C70037ECA9 /* TestsExtented.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsExtented.swift; sourceTree = "<group>"; };
 		33E995A7205875220037ECA9 /* FactInvalidTermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactInvalidTermView.swift; sourceTree = "<group>"; };
 		33E995A92058753D0037ECA9 /* FactInvalidTermView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FactInvalidTermView.xib; sourceTree = "<group>"; };
+		33E995AD205AC4300037ECA9 /* InternetConnectionHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionHandlerTests.swift; sourceTree = "<group>"; };
 		3419BCE820572294003AEAED /* InternalErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InternalErrorView.xib; sourceTree = "<group>"; };
 		3419BCEA205722A4003AEAED /* InternalErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalErrorView.swift; sourceTree = "<group>"; };
 		3419BCEE20573197003AEAED /* ConnectionErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionErrorView.xib; sourceTree = "<group>"; };
@@ -374,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				34529980204ED36B00358BB2 /* InfraStructureHandlerTests.swift */,
+				33E995AD205AC4300037ECA9 /* InternetConnectionHandlerTests.swift */,
 			);
 			path = InfraStructure;
 			sourceTree = "<group>";
@@ -656,6 +658,7 @@
 				341A0A5E204EFA0500F9E701 /* FactTests.swift in Sources */,
 				341A0A6E204F0D6C00F9E701 /* FactURLMakerTests.swift in Sources */,
 				34B8B1B5204F12EC00A58EBE /* FactMapperErrorParserTests.swift in Sources */,
+				33E995AE205AC4300037ECA9 /* InternetConnectionHandlerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,7 +675,6 @@
 				34AD0EC82049CD6F00B97FF7 /* FactCategory.swift in Sources */,
 				341A0A69204F0C9900F9E701 /* FactURLMaker.swift in Sources */,
 				34298AD6204DDA030003C863 /* CollectionViewReusable.swift in Sources */,
-				3419BCEC20572982003AEAED /* FactServiceMock.swift in Sources */,
 				34901BD92049F9E900C29ADD /* BadRequestError.swift in Sources */,
 				349A647120530AE3001BC728 /* FactScreenErrorType.swift in Sources */,
 				341A0A70204F0E7E00F9E701 /* FactMapperErrorParser.swift in Sources */,

@@ -14,7 +14,7 @@ final class FactServiceMock: FactServiceProtocol {
 	
 	private var response = HTTPURLResponse()
 	private var facts: [Fact] = []
-	private var result: Any = [:]
+	private var result: Data = Data()
 	
 	var expectedSuccessWithFacts: [FactModel] {
 		return facts.map { FactModel(fact: $0) }
@@ -28,7 +28,7 @@ final class FactServiceMock: FactServiceProtocol {
 		switch state {
 		case .success:
 			facts = someFacts
-			result = someFactsInJSON
+			result = mapJSONToData(someFactsInJSON)
 			setResponseForStatus(code: 200)
 		case .successWithEmptyResult:
 			fillWithEmptyResult()
@@ -44,17 +44,19 @@ final class FactServiceMock: FactServiceProtocol {
 	
 	func get(_ term: String) -> Observable<[Fact]> {
 		
+		let handler = InfraStructureHandler()
+		
 		return Observable.just((response, result))
-			.do(onNext: { (response, _) in
-				let handler = InfraStructureHandler()
+			.do(onNext: { (response, data) in
 				try handler.verifySuccessStatusCode(response)
 			})
-			.map {  (_, result) -> JSON in
-				let handler = InfraStructureHandler()
-				return try handler.mapResultToJSON(result)
-			}
-			.map({ [unowned self] json in
-				try self.mapJSONToFacts(json)
+			.do(onError: { error in
+				let handler = InternetConnectionHandler()
+				try handler.verify(error)
+			})
+			.map({ [unowned self] (_, data) -> [Fact] in
+				let json = try handler.mapDataToJSON(data)
+				return try self.mapJSONToFacts(json)
 			})
 	}
 	
@@ -110,6 +112,10 @@ final class FactServiceMock: FactServiceProtocol {
 		]
 	}
 	
+	private func mapJSONToData(_ json: JSON) -> Data {
+		return try! JSONSerialization.data(withJSONObject: json, options: [])
+	}
+	
 	private func setResponseForStatus(code: Int) {
 		let url = URL(string: "https://www.google.com.br")!
 		response = HTTPURLResponse(url: url, statusCode: code, httpVersion: nil,
@@ -117,9 +123,10 @@ final class FactServiceMock: FactServiceProtocol {
 	}
 	
 	private func fillWithEmptyResult() {
-		result = [
+		let emptyJSON: JSON = [
 			"total": 0,
 			"result": []
 		]
+		result = mapJSONToData(emptyJSON)
 	}
 }
