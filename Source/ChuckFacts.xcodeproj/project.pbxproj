@@ -13,6 +13,8 @@
 		33E995A8205875220037ECA9 /* FactInvalidTermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995A7205875220037ECA9 /* FactInvalidTermView.swift */; };
 		33E995AA2058753D0037ECA9 /* FactInvalidTermView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33E995A92058753D0037ECA9 /* FactInvalidTermView.xib */; };
 		33E995AE205AC4300037ECA9 /* InternetConnectionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995AD205AC4300037ECA9 /* InternetConnectionHandlerTests.swift */; };
+		33E995B1205AE7E00037ECA9 /* InternetConnectionHandable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995B0205AE7E00037ECA9 /* InternetConnectionHandable.swift */; };
+		33E995B3205AE8390037ECA9 /* InternetConnectionHandlerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995B2205AE8390037ECA9 /* InternetConnectionHandlerMock.swift */; };
 		3419BCE920572294003AEAED /* InternalErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3419BCE820572294003AEAED /* InternalErrorView.xib */; };
 		3419BCEB205722A4003AEAED /* InternalErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419BCEA205722A4003AEAED /* InternalErrorView.swift */; };
 		3419BCEF20573197003AEAED /* ConnectionErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3419BCEE20573197003AEAED /* ConnectionErrorView.xib */; };
@@ -109,6 +111,8 @@
 		33E995A7205875220037ECA9 /* FactInvalidTermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactInvalidTermView.swift; sourceTree = "<group>"; };
 		33E995A92058753D0037ECA9 /* FactInvalidTermView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FactInvalidTermView.xib; sourceTree = "<group>"; };
 		33E995AD205AC4300037ECA9 /* InternetConnectionHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionHandlerTests.swift; sourceTree = "<group>"; };
+		33E995B0205AE7E00037ECA9 /* InternetConnectionHandable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionHandable.swift; sourceTree = "<group>"; };
+		33E995B2205AE8390037ECA9 /* InternetConnectionHandlerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionHandlerMock.swift; sourceTree = "<group>"; };
 		3419BCE820572294003AEAED /* InternalErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InternalErrorView.xib; sourceTree = "<group>"; };
 		3419BCEA205722A4003AEAED /* InternalErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalErrorView.swift; sourceTree = "<group>"; };
 		3419BCEE20573197003AEAED /* ConnectionErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionErrorView.xib; sourceTree = "<group>"; };
@@ -213,6 +217,16 @@
 				33E995A7205875220037ECA9 /* FactInvalidTermView.swift */,
 			);
 			path = InvalidTerm;
+			sourceTree = "<group>";
+		};
+		33E995AF205AE7BA0037ECA9 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				33E995B0205AE7E00037ECA9 /* InternetConnectionHandable.swift */,
+				34901BDA2049FA0100C29ADD /* InternetConnectionError.swift */,
+				3440482E2053381D00D977DF /* InternetConnectionHandler.swift */,
+			);
+			path = Connection;
 			sourceTree = "<group>";
 		};
 		3419BCE520572182003AEAED /* Error */ = {
@@ -374,6 +388,7 @@
 		3452997C204DEFFD00358BB2 /* InfraStructure */ = {
 			isa = PBXGroup;
 			children = (
+				33E995B2205AE8390037ECA9 /* InternetConnectionHandlerMock.swift */,
 				34529980204ED36B00358BB2 /* InfraStructureHandlerTests.swift */,
 				33E995AD205AC4300037ECA9 /* InternetConnectionHandlerTests.swift */,
 			);
@@ -383,12 +398,11 @@
 		3452997D204DF27E00358BB2 /* InfraStructure */ = {
 			isa = PBXGroup;
 			children = (
+				33E995AF205AE7BA0037ECA9 /* Connection */,
 				3452997E204DF37800358BB2 /* InfraStructureHandler.swift */,
 				34901BD42049F9BC00C29ADD /* ServiceError.swift */,
 				34901BD62049F9D500C29ADD /* JSONParseError.swift */,
 				34901BD82049F9E900C29ADD /* BadRequestError.swift */,
-				34901BDA2049FA0100C29ADD /* InternetConnectionError.swift */,
-				3440482E2053381D00D977DF /* InternetConnectionHandler.swift */,
 			);
 			path = InfraStructure;
 			sourceTree = "<group>";
@@ -655,6 +669,7 @@
 				33E995A5205868C70037ECA9 /* TestsExtented.swift in Sources */,
 				341A0A62204EFCFD00F9E701 /* FactModelTests.swift in Sources */,
 				34529981204ED36B00358BB2 /* InfraStructureHandlerTests.swift in Sources */,
+				33E995B3205AE8390037ECA9 /* InternetConnectionHandlerMock.swift in Sources */,
 				341A0A5E204EFA0500F9E701 /* FactTests.swift in Sources */,
 				341A0A6E204F0D6C00F9E701 /* FactURLMakerTests.swift in Sources */,
 				34B8B1B5204F12EC00A58EBE /* FactMapperErrorParserTests.swift in Sources */,
@@ -692,6 +707,7 @@
 				34298ACA204DC5A10003C863 /* FactsController.swift in Sources */,
 				34298AC0204D907A0003C863 /* FactViewModel.swift in Sources */,
 				3419BCEB205722A4003AEAED /* InternalErrorView.swift in Sources */,
+				33E995B1205AE7E00037ECA9 /* InternetConnectionHandable.swift in Sources */,
 				34901BDB2049FA0100C29ADD /* InternetConnectionError.swift in Sources */,
 				33E995A8205875220037ECA9 /* FactInvalidTermView.swift in Sources */,
 				33E995A1205843F80037ECA9 /* FactEmptyResultView.swift in Sources */,

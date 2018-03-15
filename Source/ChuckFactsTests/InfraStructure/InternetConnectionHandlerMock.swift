@@ -1,14 +1,15 @@
 //
-//  InternetConnectionHandler.swift
-//  ChuckFacts
+//  InternetConnectionHandlerMock.swift
+//  ChuckFactsTests
 //
-//  Created by Calebe Emerick on 09/03/2018.
+//  Created by Calebe Emerik  | Stone on 15/03/18.
 //  Copyright © 2018 Stone Pagamentos. All rights reserved.
 //
 
+@testable import ChuckFacts
 import Foundation
 
-final class InternetConnectionHandler {
+final class InternetConnectionHandlerMock: InternetConnectionHandable {
 	
 	func verify(_ error: Error) throws {
 		

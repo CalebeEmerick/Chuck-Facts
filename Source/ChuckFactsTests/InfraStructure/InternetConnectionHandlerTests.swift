@@ -12,7 +12,7 @@ import XCTest
 
 final class InternetConnectionHandlerTests: XCTestCase {
 	
-	private var handler: InternetConnectionHandler!
+	private var handler: InternetConnectionHandable!
 	
 	private func verifyError(_ error: URLError.Code, equalTo expectedError: InternetConnectionError) {
 		expect {
@@ -30,7 +30,7 @@ final class InternetConnectionHandlerTests: XCTestCase {
 	override func setUp() {
 		super.setUp()
 		
-		handler = InternetConnectionHandler()
+		handler = InternetConnectionHandlerMock()
 	}
 	
 	override func tearDown() {
