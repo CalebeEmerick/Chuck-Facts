@@ -16,7 +16,6 @@ final class FactsView: UIView {
 	
 	@IBOutlet private var textField: UITextField!
 	@IBOutlet private var tableView: UITableView!
-	@IBOutlet private var imageView: UIImageView!
 	
 	private let dataSource = FactsDataSource()
 	private let delegate = FactsDelegate()
@@ -26,6 +25,10 @@ final class FactsView: UIView {
 	private var connectionError: ConnectionErrorView?
 	private var emptyResult: FactEmptyResultView?
 	private var invalidTerm: FactInvalidTermView?
+	
+	private lazy var loadingView: ChuckLoading = {
+		return ChuckLoading()
+	}()
 	
 	weak var viewModel: FactViewModel?
 }
@@ -37,8 +40,8 @@ extension FactsView {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
+		loadingView.setConstraints(to: self)
 		setKeyboardButtonSubscription()
-		setupImageAnimation()
 		setupTableView()
 		openKeyboard()
 	}
@@ -72,22 +75,6 @@ extension FactsView {
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.dataSource = dataSource
 		tableView.delegate = delegate
-	}
-	
-	private func setupImageAnimation() {
-		let images = getAnimatedImages()
-		imageView.animationImages = images
-		imageView.animationDuration = 2
-	}
-	
-	private func getAnimatedImages() -> [UIImage] {
-		var images: [UIImage] = []
-		for index in 1 ... 22 {
-			if let image = UIImage(named: "chuck-\(index)") {
-				images.append(image)
-			}
-		}
-		return images
 	}
 }
 
@@ -130,12 +117,12 @@ extension FactsView {
 	private func showLoading(with color: UIColor) {
 		setTextFieldInteration(to: false)
 		setTextFieldBackground(to: color)
-		showLoading()
+		loadingView.showLoading()
 	}
 	
 	private func prepareUIForSuccessResult() {
 		setTableViewAlpha(to: 1)
-		hideLoading()
+		loadingView.hideLoading()
 		setTextFieldAlpha(to: 0)
 		resetTextFieldUI()
 	}
@@ -147,18 +134,6 @@ extension FactsView {
 	private func setTextFieldBackground(to color: UIColor) {
 		UIView.animate(withDuration: 0.25) {
 			self.textField.backgroundColor = color
-		}
-	}
-	
-	private func showLoading() {
-		DispatchQueue.main.async {
-			self.imageView.startAnimating()
-		}
-	}
-	
-	private func hideLoading() {
-		DispatchQueue.main.async {
-			self.imageView.stopAnimating()
 		}
 	}
 	
@@ -217,7 +192,7 @@ extension FactsView {
 	}
 	
 	private func prepareToShowPartialView() {
-		hideLoading()
+		loadingView.hideLoading()
 		openKeyboard()
 		cleanTextField()
 		resetTextFieldUI()
@@ -285,7 +260,7 @@ extension FactsView {
 	}
 	
 	private func prepareToShowFullScreenError() {
-		hideLoading()
+		loadingView.hideLoading()
 		setTextFieldAlpha(to: 0)
 		resetTextFieldUI()
 	}
@@ -308,7 +283,7 @@ extension FactsView {
 		errorView.setup(for: self)
 		connectionError = errorView
 		errorView.didTapTryAgain = { [weak self] in
-			self?.hideLoading()
+			self?.loadingView.hideLoading()
 			self?.resetTextFieldToOriginalState()
 			self?.hideConnectionError()
 			self?.openKeyboard()
