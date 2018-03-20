@@ -157,7 +157,7 @@ extension FactsView {
 			self.tableView.reloadData()
 		}
 	}
-	
+  
 	private func resetTextFieldUI() {
 		setTextFieldBackground(to: .white)
 		setTextFieldInteration(to: true)
