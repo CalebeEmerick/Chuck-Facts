@@ -11,6 +11,11 @@ import Foundation
 final class FactURLMaker {
 	
 	func make(from baseUrl: String, with term: String) -> String {
-		return "\(baseUrl)\(term)"
+		
+		let fullURL = "\(baseUrl)\(term)"
+		
+		let encodedURLForQueryString = fullURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+		
+		return encodedURLForQueryString ?? fullURL
 	}
 }

@@ -26,7 +26,7 @@ final class FactURLMakerTests: XCTestCase {
 		super.tearDown()
 	}
 	
-	func test_shouldConcat_BaseURL_With_Term() {
+	func test_ShouldConcat_BaseURL_With_Term() {
 		
 		let baseUrl = "https://api.chucknorris.io/jokes/search?query="
 		let term = "business"
@@ -34,5 +34,16 @@ final class FactURLMakerTests: XCTestCase {
 		let fullUrl = urlMaker.make(from: baseUrl, with: term)
 		
 		expect(fullUrl).to(equal(baseUrl + term))
+	}
+	
+	func test_ShouldEncode_URL_ForQueryString() {
+		
+		let baseUrl = "https://api.chucknorris.io/jokes/search?query="
+		let term = "some term"
+		
+		let fullUrl = urlMaker.make(from: baseUrl, with: term)
+		let expectedUrl = "https://api.chucknorris.io/jokes/search?query=some%20term"
+		
+		expect(fullUrl).to(equal(expectedUrl))
 	}
 }

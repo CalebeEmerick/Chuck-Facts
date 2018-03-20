@@ -121,5 +121,3 @@ extension ChuckFactsUITests {
 		}
 	}
 }
-
-// FAZER O ENCODE DA URL DE GET FACTS
