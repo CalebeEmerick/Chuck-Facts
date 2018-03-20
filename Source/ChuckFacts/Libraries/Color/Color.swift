@@ -8,28 +8,25 @@
 
 import UIKit
 
-public struct Color {
+struct Color {
 	
 	private let allowedCharacters: CharacterSet
-	private let hexString: String
 	private let alpha: Float
-	public let strColor: String
 	
-	public var color: UIColor {
-		
+	let stringColor: String
+	
+	var color: UIColor {
 		return makeColor()
 	}
 	
-	public var cgColor: CGColor {
-		
+	var cgColor: CGColor {
 		return makeColor().cgColor
 	}
 	
-	public init(hexString: String, alpha: Float = 1) {
-		allowedCharacters = CharacterSet(charactersIn: "AaBbCcDdEeFf0123456789")
-		self.hexString = hexString
+	init(hexString: String, alpha: Float = 1) {
 		self.alpha = alpha
-		strColor = hexString.trimmingCharacters(in: allowedCharacters.inverted)
+		allowedCharacters = CharacterSet(charactersIn: "AaBbCcDdEeFf0123456789")
+		stringColor = hexString.trimmingCharacters(in: allowedCharacters.inverted)
 	}
 }
 
@@ -45,7 +42,7 @@ private extension Color {
 	private func convertToRGB() -> (r: Float, g: Float, b: Float) {
 		
 		let r, g, b: UInt32
-		let hexString = strColor
+		let hexString = stringColor
 		var hex: UInt32 = 0
 		
 		Scanner(string: hexString).scanHexInt32(&hex)
