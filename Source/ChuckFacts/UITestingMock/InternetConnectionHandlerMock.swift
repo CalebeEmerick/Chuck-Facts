@@ -6,7 +6,6 @@
 //  Copyright © 2018 Stone Pagamentos. All rights reserved.
 //
 
-@testable import ChuckFacts
 import Foundation
 
 final class InternetConnectionHandlerMock: InternetConnectionHandable {

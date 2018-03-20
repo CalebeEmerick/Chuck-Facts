@@ -13,6 +13,7 @@ final class FactInvalidTermView: UIView {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
+		accessibilityIdentifier = "FactInvalidTerm"
 		alpha = 0
 	}
 	

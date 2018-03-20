@@ -15,10 +15,23 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
+		let service: FactServiceProtocol
+		
+		if UITesting().verifyRunningInTestMode(for: CommandLine.arguments) {
+			
+			let mockState = ScreenMockState()
+			let processInfo = ProcessInfo.processInfo
+			
+			let state = mockState.getState(from: processInfo.environment)
+			service = FactServiceMock(desired: state)
+		}
+		else {
+			service = FactService()
+		}
+		
 		let screenBounds = UIScreen.main.bounds
 		let window = UIWindow(frame: screenBounds)
 		
-		let service = FactService()
 		let rootController = FactsController(service: service)
 		let rootNavigation = UINavigationController(rootViewController: rootController)
 		

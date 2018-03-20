@@ -13,6 +13,7 @@ final class FactEmptyResultView: UIView {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
+		accessibilityIdentifier = "FactEmptyResult"
 		alpha = 0
 	}
 	

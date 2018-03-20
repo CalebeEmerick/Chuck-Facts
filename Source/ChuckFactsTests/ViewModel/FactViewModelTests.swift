@@ -36,12 +36,11 @@ final class FactViewModelTests: XCTestCase {
         scheduler.start()
     }
     
-    private func compareResult(with expectedResult: [Recorded<Event<FactScreenState>>])
-        -> Bool {
+    private func compareResult(with expectedResult: [Recorded<Event<FactScreenState>>]) -> Bool {
             
-            let gotResult = observer.events
-            
-            return gotResult == expectedResult
+		let gotResult = observer.events
+		
+		return gotResult == expectedResult
     }
     
     override func setUp() {

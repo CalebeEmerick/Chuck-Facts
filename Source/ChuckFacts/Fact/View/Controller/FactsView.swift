@@ -40,6 +40,8 @@ extension FactsView {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
+		tableView.accessibilityIdentifier = "FactTableView"
+		
 		loadingView.setConstraints(to: self)
 		setKeyboardButtonSubscription()
 		setupTableView()

@@ -6,7 +6,6 @@
 //  Copyright © 2018 Stone Pagamentos. All rights reserved.
 //
 
-@testable import ChuckFacts
 import Foundation
 import RxSwift
 
@@ -16,6 +15,8 @@ final class FactServiceMock: FactServiceProtocol {
 	private var facts: [Fact] = []
 	private var result: Data = Data()
 	
+	private var isConnectionError = false
+	
 	var expectedSuccessWithFacts: [FactModel] {
 		return facts.map { FactModel(fact: $0) }
 	}
@@ -24,7 +25,31 @@ final class FactServiceMock: FactServiceProtocol {
 		return []
 	}
 	
-	init(desired state: FactScreenStateMock) {
+	init(desired state: FactScreenStateMock = .internal) {
+		configMock(to: state)
+	}
+	
+	func get(_ term: String) -> Observable<[Fact]> {
+		
+		let handler = InfraStructureHandler()
+		
+		return Observable.just((response, result))
+			.do(onNext: { (response, data) in
+				try handler.verifySuccessStatusCode(response)
+			})
+			.do(onError: { [unowned self] error in
+				let error = self.verifyIsInternetError(error)
+				let handler = InternetConnectionHandlerMock()
+				try handler.verify(error)
+			})
+			.map({ [unowned self] (_, data) -> [Fact] in
+				let json = try handler.mapDataToJSON(data)
+				return try self.mapJSONToFacts(json)
+			})
+	}
+	
+	private func configMock(to state: FactScreenStateMock) {
+		isConnectionError = false
 		switch state {
 		case .success:
 			facts = someFacts
@@ -37,27 +62,11 @@ final class FactServiceMock: FactServiceProtocol {
 			setResponseForStatus(code: 422)
 		case .invalidTerm:
 			setResponseForStatus(code: 404)
+		case .noConnection:
+			isConnectionError = true
 		case .internal:
 			setResponseForStatus(code: 500)
 		}
-	}
-	
-	func get(_ term: String) -> Observable<[Fact]> {
-		
-		let handler = InfraStructureHandler()
-		
-		return Observable.just((response, result))
-			.do(onNext: { (response, data) in
-				try handler.verifySuccessStatusCode(response)
-			})
-			.do(onError: { error in
-				let handler = InternetConnectionHandler()
-				try handler.verify(error)
-			})
-			.map({ [unowned self] (_, data) -> [Fact] in
-				let json = try handler.mapDataToJSON(data)
-				return try self.mapJSONToFacts(json)
-			})
 	}
 	
 	private func mapJSONToFacts(_ json: JSON) throws -> [Fact] {
@@ -70,14 +79,6 @@ final class FactServiceMock: FactServiceProtocol {
 			let parser = FactMapperErrorParser()
 			throw parser.parse(error)
 		}
-	}
-	
-	enum FactScreenStateMock {
-		case success
-		case successWithEmptyResult
-		case noResultsForTerm
-		case invalidTerm
-		case `internal`
 	}
 	
 	private var someFacts: [Fact] {
@@ -129,4 +130,43 @@ final class FactServiceMock: FactServiceProtocol {
 		]
 		result = mapJSONToData(emptyJSON)
 	}
+	
+	private func verifyIsInternetError(_ error: Error) -> Error {
+		if self.isConnectionError {
+			return URLError.notConnectedToInternet
+		}
+		else {
+			return error
+		}
+	}
+	
+	enum FactScreenStateMock: String {
+		case success
+		case successWithEmptyResult
+		case noResultsForTerm
+		case invalidTerm
+		case noConnection
+		case `internal`
+		
+		init(state: String) {
+			switch state {
+			case FactScreenStateMock.success.rawValue:
+				self = .success
+			case FactScreenStateMock.successWithEmptyResult.rawValue:
+				self = .successWithEmptyResult
+			case FactScreenStateMock.noResultsForTerm.rawValue:
+				self = .noResultsForTerm
+			case FactScreenStateMock.invalidTerm.rawValue:
+				self = .invalidTerm
+			case FactScreenStateMock.noConnection.rawValue:
+				self = .noConnection
+			case FactScreenStateMock.internal.rawValue:
+				self = .internal
+			default:
+				self = .internal
+			}
+		}
+	}
 }
+
+extension URLError.Code: Error {}

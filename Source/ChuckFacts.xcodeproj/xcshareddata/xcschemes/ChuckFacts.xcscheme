@@ -26,8 +26,10 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      language = "en"
+      region = "US"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -36,6 +38,16 @@
                BlueprintIdentifier = "34529966204DEE2E00358BB2"
                BuildableName = "ChuckFactsTests.xctest"
                BlueprintName = "ChuckFactsTests"
+               ReferencedContainer = "container:ChuckFacts.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "33E995B7205AF3BA0037ECA9"
+               BuildableName = "ChuckFactsUITests.xctest"
+               BlueprintName = "ChuckFactsUITests"
                ReferencedContainer = "container:ChuckFacts.xcodeproj">
             </BuildableReference>
          </TestableReference>

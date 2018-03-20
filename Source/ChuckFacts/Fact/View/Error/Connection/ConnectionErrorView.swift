@@ -34,6 +34,7 @@ final class ConnectionErrorView: UIView {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
+		accessibilityIdentifier = "FactConnectionError"
 		alpha = 0
 		
 		makeBorder(for: verifyConnectionButton)

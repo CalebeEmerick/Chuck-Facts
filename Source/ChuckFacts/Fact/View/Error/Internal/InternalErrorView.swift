@@ -13,6 +13,7 @@ final class InternalErrorView: UIView {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
+		accessibilityIdentifier = "FactInternalError"
 		alpha = 0
 	}
 	
