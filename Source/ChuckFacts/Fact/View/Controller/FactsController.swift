@@ -39,17 +39,4 @@ extension FactsController {
 	override func loadView() {
 		view = factsView
 	}
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		
-		
-	}
-}
-
-// MARK: - Methods -
-
-extension FactsController {
-	
-	
 }
