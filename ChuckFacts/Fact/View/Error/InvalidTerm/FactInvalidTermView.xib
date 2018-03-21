@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parece que alguém está tentando digitar um fato que não é valido, não é mesmo?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBE-9i-ObN">
-                    <rect key="frame" x="20" y="73" width="280" height="61"/>
+                    <rect key="frame" x="20" y="67" width="280" height="61"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="280" id="oZJ-gJ-Xvn"/>
                     </constraints>
@@ -26,22 +26,22 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Por favor, digite um fato válido." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KW1-ce-v6p">
-                    <rect key="frame" x="20" y="149" width="280" height="20.5"/>
+                    <rect key="frame" x="20" y="143" width="280" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="N0o-zd-wKg">
-                    <rect key="frame" x="71.5" y="15" width="177.5" height="48"/>
+                    <rect key="frame" x="74" y="15" width="172.5" height="42"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🤔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNK-2n-383">
-                            <rect key="frame" x="0.0" y="0.0" width="45" height="48"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="42"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hmmmmmmm..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEg-an-4jW">
-                            <rect key="frame" x="50" y="0.0" width="127.5" height="48"/>
+                            <rect key="frame" x="45" y="0.0" width="127.5" height="42"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
