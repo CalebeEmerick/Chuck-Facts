@@ -25,7 +25,7 @@ final class FactServiceMock: FactServiceProtocol {
 		return []
 	}
 	
-	init(desired state: FactScreenStateMock = .internal) {
+	init(desired state: FactScreenStateMock = .unknown) {
 		configMock(to: state)
 	}
 	
@@ -64,7 +64,7 @@ final class FactServiceMock: FactServiceProtocol {
 			setResponseForStatus(code: 404)
 		case .noConnection:
 			isConnectionError = true
-		case .internal:
+		case .unknown:
 			setResponseForStatus(code: 500)
 		}
 	}
@@ -146,7 +146,7 @@ final class FactServiceMock: FactServiceProtocol {
 		case noResultsForTerm
 		case invalidTerm
 		case noConnection
-		case `internal`
+		case unknown
 		
 		init(state: String) {
 			switch state {
@@ -160,10 +160,10 @@ final class FactServiceMock: FactServiceProtocol {
 				self = .invalidTerm
 			case FactScreenStateMock.noConnection.rawValue:
 				self = .noConnection
-			case FactScreenStateMock.internal.rawValue:
-				self = .internal
+			case FactScreenStateMock.unknown.rawValue:
+				self = .unknown
 			default:
-				self = .internal
+				self = .unknown
 			}
 		}
 	}

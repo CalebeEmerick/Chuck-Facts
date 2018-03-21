@@ -25,7 +25,7 @@ extension FactScreenState {
 		case .invalidTerm:
 			self =  .failure(.invalidTerm)
 		case .other:
-			self = .failure(.internal)
+			self = .failure(.unknown)
 		}
 	}
 }

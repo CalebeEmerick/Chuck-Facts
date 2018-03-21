@@ -137,12 +137,12 @@ final class FactViewModelTests: XCTestCase {
 	
 	func test_State_ShouldBe_Failure_With_InternalError() {
 		
-		setServiceState(for: .internal)
+		setServiceState(for: .unknown)
 		searchSomeTerm()
 		
 		let expectedResult = [
 			onNext(expect: FactScreenState.loading(expectedLoadingColor)),
-			onNext(expect: FactScreenState.failure(.internal)),
+			onNext(expect: FactScreenState.failure(.unknown)),
 			completed()
 		]
 		

@@ -51,12 +51,12 @@ final class FactViewModel {
 	private func mapErrorToScreenState(_ error: Error) -> FactScreenState {
 		
 		guard let serviceError = error as? ServiceError else {
-			return .failure(.internal)
+			return .failure(.unknown)
 		}
 		
 		switch serviceError {
 		case .JSONParse, .internalServer:
-			return .failure(.internal)
+			return .failure(.unknown)
 		case let .badRequest(error):
 			return FactScreenState(badRequest: error)
 		case .connection:

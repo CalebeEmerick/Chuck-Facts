@@ -103,7 +103,7 @@ extension FactsView {
 		switch error {
 		case .connection:
 			showConnectionError()
-		case .internal:
+		case .unknown:
 			showInternalError()
 		case .invalidTerm:
 			showInvalidTermError()

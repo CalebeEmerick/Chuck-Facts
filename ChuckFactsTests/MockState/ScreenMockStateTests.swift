@@ -66,6 +66,6 @@ final class ScreenMockStateTests: XCTestCase {
 	
 	func test_State_ShouldBe_Internal() {
 		
-		verifyEnvironment(for: .internal)
+		verifyEnvironment(for: .unknown)
 	}
 }

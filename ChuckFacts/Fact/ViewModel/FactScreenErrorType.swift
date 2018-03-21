@@ -13,5 +13,5 @@ enum FactScreenErrorType {
 	case connection
 	case noResults
 	case invalidTerm
-	case `internal`
+	case unknown
 }
