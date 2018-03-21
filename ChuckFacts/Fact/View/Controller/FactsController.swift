@@ -17,10 +17,11 @@ final class FactsController: UIViewController {
 	private let viewModel: FactViewModel
 	private let factsView: FactsView
 	
-	init(service: FactServiceProtocol) {
-		viewModel = FactViewModel(service: service)
+	init(service: FactServiceProtocol, settings: SettingsOpenable) {
+		viewModel = FactViewModel(service: service, settings: settings)
 		factsView = FactsView.makeXib()
 		factsView.viewModel = viewModel
+		factsView.settingsOpener = settings
 		
 		super.init(nibName: nil, bundle: nil)
 		

@@ -31,6 +31,7 @@ final class FactsView: UIView {
 	}()
 	
 	weak var viewModel: FactViewModel?
+	var settingsOpener: SettingsOpenable!
 }
 
 // MARK: - Life Cycle -
@@ -282,6 +283,7 @@ extension FactsView {
 	
 	private func prepareConnectionErrorView() {
 		let errorView = ConnectionErrorView.makeXib()
+		errorView.settingsOpener = settingsOpener
 		errorView.setup(for: self)
 		connectionError = errorView
 		errorView.didTapTryAgain = { [weak self] in

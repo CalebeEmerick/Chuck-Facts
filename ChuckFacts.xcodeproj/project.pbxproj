@@ -16,6 +16,10 @@
 		3371BF6E205C444500DAA9F2 /* ChuckLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3371BF6D205C444500DAA9F2 /* ChuckLoading.swift */; };
 		3371BF70205C56F600DAA9F2 /* ChuckLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3371BF6F205C56F600DAA9F2 /* ChuckLoadingView.swift */; };
 		3371BF73205C72CD00DAA9F2 /* ChuckLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3371BF72205C72CD00DAA9F2 /* ChuckLoadingTests.swift */; };
+		338155D92062A9FE007105FA /* ConnectionErrorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338155D82062A9FE007105FA /* ConnectionErrorViewModelTests.swift */; };
+		338155DC2062ABE3007105FA /* SettingsOpenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338155DB2062ABE3007105FA /* SettingsOpenable.swift */; };
+		338155DE2062AC16007105FA /* SettingsOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338155DD2062AC16007105FA /* SettingsOpener.swift */; };
+		338155E12062AD1A007105FA /* SettingsOpenerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338155E02062AD1A007105FA /* SettingsOpenerMock.swift */; };
 		33E9959F205843EC0037ECA9 /* FactEmptyResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33E9959E205843EC0037ECA9 /* FactEmptyResultView.xib */; };
 		33E995A1205843F80037ECA9 /* FactEmptyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995A0205843F80037ECA9 /* FactEmptyResultView.swift */; };
 		33E995A5205868C70037ECA9 /* TestsExtented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E995A4205868C70037ECA9 /* TestsExtented.swift */; };
@@ -145,6 +149,10 @@
 		3371BF6D205C444500DAA9F2 /* ChuckLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckLoading.swift; sourceTree = "<group>"; };
 		3371BF6F205C56F600DAA9F2 /* ChuckLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckLoadingView.swift; sourceTree = "<group>"; };
 		3371BF72205C72CD00DAA9F2 /* ChuckLoadingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckLoadingTests.swift; sourceTree = "<group>"; };
+		338155D82062A9FE007105FA /* ConnectionErrorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorViewModelTests.swift; sourceTree = "<group>"; };
+		338155DB2062ABE3007105FA /* SettingsOpenable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOpenable.swift; sourceTree = "<group>"; };
+		338155DD2062AC16007105FA /* SettingsOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOpener.swift; sourceTree = "<group>"; };
+		338155E02062AD1A007105FA /* SettingsOpenerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOpenerMock.swift; sourceTree = "<group>"; };
 		33E9959E205843EC0037ECA9 /* FactEmptyResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FactEmptyResultView.xib; sourceTree = "<group>"; };
 		33E995A0205843F80037ECA9 /* FactEmptyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactEmptyResultView.swift; sourceTree = "<group>"; };
 		33E995A4205868C70037ECA9 /* TestsExtented.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsExtented.swift; sourceTree = "<group>"; };
@@ -286,6 +294,24 @@
 				3371BF72205C72CD00DAA9F2 /* ChuckLoadingTests.swift */,
 			);
 			path = Loading;
+			sourceTree = "<group>";
+		};
+		338155DA2062ABBF007105FA /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				338155DB2062ABE3007105FA /* SettingsOpenable.swift */,
+				338155DD2062AC16007105FA /* SettingsOpener.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		338155DF2062ACFF007105FA /* ConnectionErrorViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				338155E02062AD1A007105FA /* SettingsOpenerMock.swift */,
+				338155D82062A9FE007105FA /* ConnectionErrorViewModelTests.swift */,
+			);
+			path = ConnectionErrorViewModel;
 			sourceTree = "<group>";
 		};
 		33E9959D205843CE0037ECA9 /* EmptyResult */ = {
@@ -471,9 +497,10 @@
 		34529968204DEE2E00358BB2 /* ChuckFactsTests */ = {
 			isa = PBXGroup;
 			children = (
+				338155DF2062ACFF007105FA /* ConnectionErrorViewModel */,
 				3345A011206054CF00DDE15B /* MockState */,
 				3371BF71205C72B300DAA9F2 /* Loading */,
-				34B54AC120518D1000ACC3AE /* ViewModel */,
+				34B54AC120518D1000ACC3AE /* FactViewModel */,
 				341A0A6A204F0D4900F9E701 /* URLMaker */,
 				341A0A5C204EF9AE00F9E701 /* Fact */,
 				34529982204EE60400358BB2 /* Mapper */,
@@ -542,11 +569,11 @@
 			isa = PBXGroup;
 			children = (
 				346FB51A20489C19006F962F /* Fact */,
-				3345A00C2060525500DDE15B /* UITestingMock */,
 				34298ADC204DDA250003C863 /* Extensions */,
 				34298ACF204DD9CB0003C863 /* Libraries */,
 				346FB515204891E5006F962F /* Resources */,
 				346FB514204891BC006F962F /* Supporting Files */,
+				3345A00C2060525500DDE15B /* UITestingMock */,
 			);
 			path = ChuckFacts;
 			sourceTree = "<group>";
@@ -578,6 +605,7 @@
 				34AD0ECE2049D28200B97FF7 /* Model */,
 				34298ABE204D90680003C863 /* ViewModel */,
 				34298AC8204DC5860003C863 /* View */,
+				338155DA2062ABBF007105FA /* Settings */,
 			);
 			path = Fact;
 			sourceTree = "<group>";
@@ -618,12 +646,12 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		34B54AC120518D1000ACC3AE /* ViewModel */ = {
+		34B54AC120518D1000ACC3AE /* FactViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				34B54AC220518D2400ACC3AE /* FactViewModelTests.swift */,
 			);
-			path = ViewModel;
+			path = FactViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -813,7 +841,9 @@
 				34529981204ED36B00358BB2 /* InfraStructureHandlerTests.swift in Sources */,
 				341A0A5E204EFA0500F9E701 /* FactTests.swift in Sources */,
 				341A0A6E204F0D6C00F9E701 /* FactURLMakerTests.swift in Sources */,
+				338155D92062A9FE007105FA /* ConnectionErrorViewModelTests.swift in Sources */,
 				34B8B1B5204F12EC00A58EBE /* FactMapperErrorParserTests.swift in Sources */,
+				338155E12062AD1A007105FA /* SettingsOpenerMock.swift in Sources */,
 				33E995AE205AC4300037ECA9 /* InternetConnectionHandlerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -839,6 +869,7 @@
 				34901BD72049F9D500C29ADD /* JSONParseError.swift in Sources */,
 				34298AD5204DDA030003C863 /* NibCreatable.swift in Sources */,
 				3345A0102060534D00DDE15B /* UITesting.swift in Sources */,
+				338155DE2062AC16007105FA /* SettingsOpener.swift in Sources */,
 				34298ACC204DD84B0003C863 /* FactsView.swift in Sources */,
 				34AD0EE12049DA8900B97FF7 /* FactService.swift in Sources */,
 				3345A01A20618FE300DDE15B /* InternetConnectionHandlerMock.swift in Sources */,
@@ -854,6 +885,7 @@
 				3419BCEB205722A4003AEAED /* InternalErrorView.swift in Sources */,
 				33E995B1205AE7E00037ECA9 /* InternetConnectionHandable.swift in Sources */,
 				34901BDB2049FA0100C29ADD /* InternetConnectionError.swift in Sources */,
+				338155DC2062ABE3007105FA /* SettingsOpenable.swift in Sources */,
 				33E995A8205875220037ECA9 /* FactInvalidTermView.swift in Sources */,
 				3345A01720605D4700DDE15B /* FactServiceMock.swift in Sources */,
 				33E995A1205843F80037ECA9 /* FactEmptyResultView.swift in Sources */,

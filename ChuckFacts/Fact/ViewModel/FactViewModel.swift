@@ -11,9 +11,11 @@ import RxSwift
 final class FactViewModel {
 	
 	private let service: FactServiceProtocol
+	private let settings: SettingsOpenable
 	
-	init(service: FactServiceProtocol) {
+	init(service: FactServiceProtocol, settings: SettingsOpenable) {
 		self.service = service
+		self.settings = settings
 	}
 	
 	func search(for term: String) -> Observable<FactScreenState> {

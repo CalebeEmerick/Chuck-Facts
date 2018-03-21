@@ -21,14 +21,14 @@ final class ConnectionErrorView: UIView {
 		didTapTryAgain?()
 	}
 	
-	private let viewModel: ConnectionErrorViewModel
+	private var viewModel: ConnectionErrorViewModel!
 	
 	var didTapTryAgain: (() -> Void)?
 	
-	required init?(coder aDecoder: NSCoder) {
-		viewModel = ConnectionErrorViewModel()
-		
-		super.init(coder: aDecoder)
+	var settingsOpener: SettingsOpenable! {
+		didSet {
+			viewModel = ConnectionErrorViewModel(settings: settingsOpener)
+		}
 	}
 	
 	override func awakeFromNib() {

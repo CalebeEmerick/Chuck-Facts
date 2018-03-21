@@ -32,7 +32,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 		let screenBounds = UIScreen.main.bounds
 		let window = UIWindow(frame: screenBounds)
 		
-		let rootController = FactsController(service: service)
+		let settingsOpener = SettingsOpener()
+		
+		let rootController = FactsController(service: service, settings: settingsOpener)
 		let rootNavigation = UINavigationController(rootViewController: rootController)
 		
 		window.rootViewController = rootNavigation

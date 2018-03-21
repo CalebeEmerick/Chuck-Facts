@@ -10,17 +10,13 @@ import UIKit
 
 final class ConnectionErrorViewModel {
 	
-	private let application = UIApplication.shared
+	private let settings: SettingsOpenable
+	
+	init(settings: SettingsOpenable) {
+		self.settings = settings
+	}
 	
 	func openSettings() {
-		
-		guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString),
-			application.canOpenURL(settingsUrl) else {
-			return
-		}
-		
-		DispatchQueue.main.async {
-			self.application.open(settingsUrl)
-		}
+		settings.open()
 	}
 }
